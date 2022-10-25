@@ -7,4 +7,4 @@ function Header() {
 
 export default Header;
 
-const Wrapper = styled.footer``;
+const Wrapper = styled.header``;

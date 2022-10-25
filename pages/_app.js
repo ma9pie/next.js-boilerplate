@@ -7,7 +7,7 @@ import "@/styles/fonts.scss";
 import "@/styles/globals.scss";
 import reset from "@/styles/reset";
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page);
 
   const [queryClient] = useState(() => new QueryClient());
@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default App;
 
 const ReactQueryDevtoolsWrapper = styled.div`
   background-color: black !important;
