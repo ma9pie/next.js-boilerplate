@@ -4,7 +4,6 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <link rel="icon" href="/public/favicon.ico" />
         {/* 다크모드 시 화면 깜빡임 제거 */}
         <script
           dangerouslySetInnerHTML={{
