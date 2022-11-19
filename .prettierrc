@@ -8,6 +8,8 @@
     "@/layouts/*",
     "@/utils/*",
     "@/api/*",
+    "@/hooks/*",
+    "@/styles/reset",
     "@/styles/*",
     "@/svg/*",
     "@/images/*"
