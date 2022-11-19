@@ -16,32 +16,44 @@ a {
   color: var(--mainText);
   font-family: "NotoSansKR";
   box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* 라이트모드(기본) */
 :root {
-  // 브랜드 컬러
-  --primaryColor: #fcd034;
-
-  // 배경
+  // Text
+  --main: #21252f;
+  --sub: #868d9a;
+  --btn: #ffffff;
+  // Background
   --bg: #ffffff;
-
-  // 텍스트
-  --mainText: #21252f;
-  --subText: #868d9a;
+  --overlay: rgba(0, 0, 0, 0.4);
+  --toast: rgba(0, 0, 0, 0.6);
+  // Components
+  --textBox: #f9f9f9;
+  --disableBtn: #e9eaed;
+  --sectionLine: #f0f0f0;
+  --icon1: #b4b9c1;
+  --icon2: #727988;
 }
 
 /* 다크모드 */
 [data-theme="Dark"] {
-  // 브랜드 컬러
-  --primaryColor: #fbd538;
-
-  // 배경
-  --bg: #202124;
-
-  // 텍스트
-  --mainText: #ffffff;
-  --subText: #868d9a;
+  // Text
+  --main: #ffffff;
+  --sub: #868d9a;
+  --btn: #ffffff;
+  // Background
+  --bg: #1d1d21;
+  --overlay: #000000;
+  --toast: #585858;
+  // Components
+  --textBox: #2d3138;
+  --disableBtn: #3b3b3b;
+  --sectionLine: #343a45;
+  --icon1: #4a515d;
+  --icon2: #727988;
 }
 
 /* react-modal */

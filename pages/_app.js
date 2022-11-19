@@ -4,10 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import GoogleAnalyticsUtils from "@/utils/GoogleAnalyticsUtils";
-import "@/styles/fonts.scss";
-import "@/styles/globals.scss";
-import "@/styles/reset.scss";
-import "@/styles/simplebar.scss";
+import "@/styles/app.scss";
 
 function App({ Component, pageProps }) {
   const router = useRouter();

@@ -100,13 +100,13 @@ const Top = styled.div`
 `;
 
 const Title = styled.div`
-  ${fontStyles.ExtTitle}
+  ${fontStyles.headline24}
   white-space: nowrap;
   margin-bottom: 32px;
 `;
 
 const ContentBox = styled.div`
-  ${fontStyles.Body}
+  ${fontStyles.body14}
   text-align: center;
 `;
 
@@ -115,7 +115,7 @@ const Text = styled.p`
 `;
 
 const ButtonBox = styled.div`
-  ${fontStyles.ExtButton}
+  ${fontStyles.body14}
   display: flex;
   justify-content: space-between;
   margin-top: 32px;
