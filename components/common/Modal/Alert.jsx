@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import React, { useEffect } from "react";
 import ReactModal from "react-modal";
-import fontStyles from "@/styles/fontStyles";
 
 function AlertModal(props) {
   const unixTime = parseInt(new Date().getTime() / 1000);
@@ -100,13 +99,13 @@ const Top = styled.div`
 `;
 
 const Title = styled.div`
-  ${fontStyles.headline24}
+  font: var(--headline24);
   white-space: nowrap;
   margin-bottom: 32px;
 `;
 
 const ContentBox = styled.div`
-  ${fontStyles.body14}
+  font: var(--body14);
   text-align: center;
 `;
 
@@ -115,7 +114,7 @@ const Text = styled.p`
 `;
 
 const ButtonBox = styled.div`
-  ${fontStyles.body14}
+  font: var(--body14);
   display: flex;
   justify-content: space-between;
   margin-top: 32px;
