@@ -41,10 +41,18 @@ function Carousel(props) {
           props.setTabNum(swiper.activeIndex);
         }}
       >
-        {props.children[0] &&
-          props.children?.map((child, key) => (
-            <SwiperSlide key={key}>{child}</SwiperSlide>
-          ))}
+        {(() => {
+          // child가 1개인 경우
+          if (props.children.length === undefined) {
+            return <SwiperSlide>{props.children}</SwiperSlide>;
+          }
+          // child가 0개 또는 2개 이상인 경우
+          else {
+            return props.children?.map((child, key) => (
+              <SwiperSlide key={key}>{child}</SwiperSlide>
+            ));
+          }
+        })()}
       </Swiper>
     </Wrapper>
   );
