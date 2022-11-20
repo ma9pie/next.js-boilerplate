@@ -41,9 +41,10 @@ function Carousel(props) {
           props.setTabNum(swiper.activeIndex);
         }}
       >
-        {props.children?.map((child, key) => (
-          <SwiperSlide key={key}>{child}</SwiperSlide>
-        ))}
+        {props.children[0] &&
+          props.children?.map((child, key) => (
+            <SwiperSlide key={key}>{child}</SwiperSlide>
+          ))}
       </Swiper>
     </Wrapper>
   );
