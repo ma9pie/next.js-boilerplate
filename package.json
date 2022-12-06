@@ -18,14 +18,17 @@
     "moment": "^2.29.4",
     "next": "12.3.1",
     "nprogress": "^0.2.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "rc-tooltip": "^5.2.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "react-modal": "^3.16.1",
     "react-query": "^3.39.2",
-    "react-toastify": "^9.0.8",
+    "react-toastify": "^9.1.1",
     "recoil": "^0.7.6",
     "sass": "^1.55.0",
-    "swiper": "^8.4.4"
+    "sharp": "^0.31.2",
+    "simplebar-react": "^2.4.3",
+    "swiper": "^8.4.5"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.19.6",

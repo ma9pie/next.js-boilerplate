@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import Toast from "@/components/common/Modals/Toast";
 import GoogleAnalyticsUtils from "@/utils/GoogleAnalyticsUtils";
 import "@/styles/app.scss";
 
@@ -25,15 +26,16 @@ function App({ Component, pageProps }) {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <Toast></Toast>
+      <Hydrate state={pageProps?.dehydrateState}>
+        {getLayout(<Component {...pageProps} />)}
+      </Hydrate>
       <ReactQueryDevtoolsWrapper>
         {typeof window !== "undefined" &&
           window.location.hostname === "localhost" && (
             <ReactQueryDevtools initialIsOpen={false} />
           )}
       </ReactQueryDevtoolsWrapper>
-      <Hydrate state={pageProps?.dehydrateState}>
-        {getLayout(<Component {...pageProps} />)}
-      </Hydrate>
     </QueryClientProvider>
   );
 }

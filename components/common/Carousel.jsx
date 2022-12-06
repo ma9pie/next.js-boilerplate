@@ -61,17 +61,27 @@ function Carousel(props) {
 export default Carousel;
 
 Carousel.defaultProps = {
+  width: "auto",
+  height: "auto",
+  margin: "0px",
+  padding: "0px",
+  borderRadius: "0px",
+  overflow: "visible",
   loop: false,
   autoplay: false,
   spaceBetween: 0,
   slidesPerView: 1,
   loopAdditionalSlides: 1,
-  width: "auto",
-  tabNum: 0,
+  tabNum: undefined,
   children: [],
   setTabNum: () => {},
 };
 
 const Wrapper = styled.div`
   width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  margin: ${(props) => props.margin};
+  padding: ${(props) => props.padding};
+  border-radius: ${(props) => props.borderRadius};
+  overflow: ${(props) => props.overflow}; ;
 `;

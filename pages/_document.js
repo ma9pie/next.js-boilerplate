@@ -4,10 +4,6 @@ export default function Document() {
   return (
     <Html>
       <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
         <meta name="description" content="Next.js boilerplate" />
 
         {/* 아이콘 생성 사이트 - https://favicomatic.com */}
@@ -141,6 +137,11 @@ export default function Document() {
         />
       </Head>
       <body>
+        <div id="modal"></div>
+        <div id="bottom-sheet"></div>
+        <div id="toast"></div>
+        <div id="confirm-modal"></div>
+        <div id="alert-modal"></div>
         <Main />
         <NextScript />
       </body>
