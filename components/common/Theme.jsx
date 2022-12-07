@@ -1,17 +1,14 @@
+import { themeState } from "@/recoil/atom";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import React, { useCallback, useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { commonActions } from "@/redux/modules/common";
+import { useRecoilState } from "recoil";
 import CookieUtils from "@/utils/CookieUtils";
 import moon from "@/images/moon.svg";
 import sun from "@/images/sun.svg";
 
 const Theme = (props) => {
-  // const dispatch = useDispatch();
-  // const commonState = useSelector((state) => state.common);
-
-  const [colorType, setColorType] = useState("RED-GREEN");
+  const [theme, setTheme] = useRecoilState(themeState);
 
   // 다크 모드
   const setDark = useCallback(() => {
@@ -20,7 +17,7 @@ const Theme = (props) => {
     });
     document.documentElement.setAttribute("data-theme", "Dark");
     localStorage.setItem("theme", "Dark");
-    // dispatch(commonActions.setTheme("Dark"));
+    setTheme("Dark");
   }, []);
 
   // 라이트 모드
@@ -30,30 +27,16 @@ const Theme = (props) => {
     });
     document.documentElement.setAttribute("data-theme", "Light");
     localStorage.setItem("theme", "Light");
-    // dispatch(commonActions.setTheme("Light"));
+    setTheme("Light");
   }, []);
-
-  // 적/녹 모드
-  const setRedGreenMode = () => {
-    localStorage.setItem("color", "RED-GREEN");
-    document.documentElement.setAttribute("data-color", "RED-GREEN");
-    setColorType("RED-GREEN");
-  };
-
-  // 적/청 모드
-  const setRedBlueMode = () => {
-    localStorage.setItem("color", "RED-BLUE");
-    document.documentElement.setAttribute("data-color", "RED-BLUE");
-    setColorType("RED-BLUE");
-  };
 
   // 테마 변경
   const toggleTheme = () => {
-    // if (commonState.theme === "Dark") {
-    //   setLight();
-    // } else {
-    //   setDark();
-    // }
+    if (theme === "Dark") {
+      setLight();
+    } else {
+      setDark();
+    }
   };
 
   useEffect(() => {
@@ -66,12 +49,12 @@ const Theme = (props) => {
 
   return (
     <Wrapper {...props} onClick={toggleTheme}>
-      {/* {commonState.theme === "Light" && (
+      {theme === "Light" && (
         <Image src={sun} alt="theme_icon" width={30} height={30}></Image>
       )}
-      {commonState.theme === "Dark" && (
+      {theme === "Dark" && (
         <Image src={moon} alt="theme_icon" width={30} height={30}></Image>
-      )} */}
+      )}
     </Wrapper>
   );
 };

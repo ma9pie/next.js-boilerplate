@@ -20,3 +20,8 @@ export const filterState = atom({
   key: "filterState",
   default: { importance: "", status: "" },
 });
+
+export const themeState = atom({
+  key: "themeState",
+  default: "Dark",
+});
