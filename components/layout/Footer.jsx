@@ -11,5 +11,15 @@ function Footer() {
 
 export default Footer;
 
-const Wrapper = styled.footer``;
-const Copyright = styled.p``;
+const Wrapper = styled.footer`
+  position: relative;
+  height: 48px;
+  padding: 16px;
+  background-color: var(--textBox);
+  & * {
+    background-color: inherit;
+  }
+`;
+const Copyright = styled.p`
+  text-align: right;
+`;

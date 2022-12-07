@@ -9,7 +9,7 @@ function CommonLayout(props) {
     <Container>
       <Head></Head>
       <Header></Header>
-      <Body>{props.children}</Body>
+      <BodyContent>{props.children}</BodyContent>
       <Footer></Footer>
     </Container>
   );
@@ -17,6 +17,9 @@ function CommonLayout(props) {
 
 export default CommonLayout;
 
-const Container = styled.div``;
-
-const Body = styled.div``;
+const Container = styled.div`
+  height: 100vh;
+`;
+const BodyContent = styled.div`
+  min-height: calc(100% - 108px);
+`;

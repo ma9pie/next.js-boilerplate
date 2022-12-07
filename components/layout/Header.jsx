@@ -7,4 +7,6 @@ function Header() {
 
 export default Header;
 
-const Wrapper = styled.header``;
+const Wrapper = styled.header`
+  height: 60px;
+`;
