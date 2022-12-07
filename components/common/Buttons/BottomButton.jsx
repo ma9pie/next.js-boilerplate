@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React from "react";
 import Button from "@/components/common/Buttons";
 
-function LargeButton(props) {
+function BottomButton(props) {
   const styles = {
     font: "var(--headline16)",
     width: "100%",
@@ -16,13 +16,15 @@ function LargeButton(props) {
   );
 }
 
-export default LargeButton;
+export default BottomButton;
 
 const Wrapper = styled.div`
   position: fixed;
-  bottom: 0px;
+  bottom: 16px;
   left: 0px;
   width: calc(100% - 48px);
   margin: 0px 24px;
   z-index: 10;
+  border-radius: 12px;
+  overflow: hidden;
 `;

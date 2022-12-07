@@ -1,27 +1,38 @@
 import { css, cx } from "@emotion/css";
 import styled from "@emotion/styled";
 import React from "react";
+import Ripple from "@/components/common/Ripple";
 
 const Buttons = (props) => {
   return (
-    <Wrapper>
-      {props.type === "sub" ? (
-        <SubButton
-          className={props.disabled ? cx(disabledStyles) : cx(activeSub)}
-          onClick={props.onClick}
-          {...props}
-        >
-          {props.children}
-        </SubButton>
-      ) : (
-        <MainButton
-          className={props.disabled ? cx(disabledStyles) : cx(activeMain)}
-          onClick={props.onClick}
-          {...props}
-        >
-          {props.children}
-        </MainButton>
-      )}
+    <Wrapper {...props}>
+      <Ripple type={props.type}>
+        {(() => {
+          if (props.disabled) {
+            return (
+              <Button
+                {...props}
+                backgroundColor="var(--disabled)"
+                cursor="auto"
+              >
+                <Children>{props.children}</Children>
+              </Button>
+            );
+          } else if (props.type === "sub") {
+            return (
+              <Button {...props} backgroundColor="var(--textBox)">
+                <Children>{props.children}</Children>
+              </Button>
+            );
+          } else {
+            return (
+              <Button {...props}>
+                <Children>{props.children}</Children>
+              </Button>
+            );
+          }
+        })()}
+      </Ripple>
     </Wrapper>
   );
 };
@@ -29,44 +40,30 @@ const Buttons = (props) => {
 export default Buttons;
 
 Buttons.defaultProps = {
+  font: "var(--body16)",
   width: "100%",
   height: "56px",
   margin: "0px",
   padding: "0px",
-  font: "var(--body16)",
+  border: "0px",
+  borderRadius: "5px",
+  color: "white",
+  backgroundColor: "var(--blue700)",
+  cursor: "pointer",
+  disabled: false,
   onClick: () => {},
 };
 
-const activeMain = css`
-  color: var(--yellowBtn);
-  background-color: var(--brandColor);
-  cursor: pointer;
-  &:active {
-    background-color: var(--pressedBtnMain);
-  }
+const Wrapper = styled.span`
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  width: ${(props) => props.width};
+  border-radius: ${(props) => props.borderRadius};
 `;
 
-const activeSub = css`
-  color: var(--main);
-  background-color: var(--bg);
-  border: 1px solid var(--sectionLine);
-  cursor: pointer;
-  &:active {
-    background-color: var(--pressedBtnSub);
-  }
-`;
-
-const disabledStyles = css`
-  color: var(--sub);
-  background-color: var(--disableBtn);
-  border: 0px;
-`;
-
-const Wrapper = styled.div``;
-
-const MainButton = styled.button`
+const Button = styled.button`
   font: ${(props) => props.font};
-  ${(props) => props.fontStyles};
   font-weight: ${(props) => props.fontWeight};
   font-size: ${(props) => props.fontSize};
   line-height: ${(props) => props.fontHeight};
@@ -74,25 +71,22 @@ const MainButton = styled.button`
   height: ${(props) => props.height};
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
-  border: 0px;
-  border-radius: ${(props) =>
-    props.borderRadius ? props.borderRadius : "5px"};
+  border: ${(props) => props.border};
+  border-radius: ${(props) => props.borderRadius};
+  color: ${(props) => props.color};
+  background-color: ${(props) => props.backgroundColor};
+  cursor: ${(props) => props.cursor};
   text-align: center;
   white-space: nowrap;
+  transition: background-color 0.2s ease;
+  &:hover {
+  }
 `;
-
-const SubButton = styled.button`
-  font: ${(props) => props.font};
-  ${(props) => props.fontStyles};
-  font-weight: ${(props) => props.fontWeight};
-  font-size: ${(props) => props.fontSize};
-  line-height: ${(props) => props.fontHeight};
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  margin: ${(props) => props.margin};
-  padding: ${(props) => props.padding};
-  border-radius: ${(props) =>
-    props.borderRadius ? props.borderRadius : "5px"};
-  text-align: center;
-  white-space: nowrap;
+const Children = styled.div`
+  z-index: 1;
+  background-color: transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;

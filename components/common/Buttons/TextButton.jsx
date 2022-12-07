@@ -1,15 +1,14 @@
-import { css, cx } from "@emotion/css";
 import styled from "@emotion/styled";
 import React from "react";
 
 function TextButton(props) {
   return (
-    <Wrapper
-      className={props.type === "sub" ? cx(sub) : cx(main)}
+    <Text
+      color={props.type === "sub" ? "var(--sub)" : "var(--blue500)"}
       onClick={props.onClick}
     >
       {props.children}
-    </Wrapper>
+    </Text>
   );
 }
 
@@ -19,16 +18,9 @@ TextButton.defaultProps = {
   onClick: () => {},
 };
 
-const main = css`
-  color: var(--brandColor);
-`;
-
-const sub = css`
-  color: var(--sub);
-`;
-
-const Wrapper = styled.span`
+const Text = styled.span`
   font: var(--body14);
+  color: ${(props) => props.color};
   text-decoration: underline;
   text-underline-position: under;
   cursor: pointer;
