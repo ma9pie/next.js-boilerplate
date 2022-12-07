@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { RecoilRoot } from "recoil";
 import GoogleAnalyticsUtils from "@/utils/GoogleAnalyticsUtils";
 import "@/styles/app.scss";
 
@@ -26,7 +27,7 @@ function App({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps?.dehydrateState}>
-        {getLayout(<Component {...pageProps} />)}
+        <RecoilRoot>{getLayout(<Component {...pageProps} />)}</RecoilRoot>
       </Hydrate>
       <ReactQueryDevtoolsWrapper>
         {typeof window !== "undefined" &&

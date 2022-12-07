@@ -11,7 +11,11 @@ function Home() {
   }, []);
   return (
     <Wrapper>
-      <Test>index</Test>
+      {Array(3)
+        .fill()
+        .map((item, key) => (
+          <Test key={key}>index</Test>
+        ))}
     </Wrapper>
   );
 }
