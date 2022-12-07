@@ -20,6 +20,10 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+input:focus {
+  outline: none;
+}
+
 /* 라이트모드(기본) */
 :root {
   --brandColor: #0064ff;
