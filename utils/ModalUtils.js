@@ -1,15 +1,9 @@
 import styled from "@emotion/styled";
-import { debounce } from "lodash";
 import ReactDOM from "react-dom";
-import { toast } from "react-toastify";
 import AlertModal from "@/components/common/Modals/AlertModal";
 import BottomSheet from "@/components/common/Modals/BottomSheet";
 import ConfirmModal from "@/components/common/Modals/ConfirmModal";
-import ControlUtils from "@/utils/ControlUtils";
-import useDebounce from "@/hooks/useDebounce";
-import InfoSvg from "@/svg/InfoSvg";
-import SuccessSvg from "@/svg/SuccessSvg";
-import WarningSvg from "@/svg/WarningSvg";
+import ToastPopup from "@/components/common/Modals/ToastPopup";
 
 const ModalUtils = () => {};
 
@@ -106,66 +100,39 @@ ModalUtils.closeBottomSheet = () => {
 };
 
 /**
- * [Toast 팝업]
+ * [ToastPopup]
+ * 하단 중앙에 뜨는 토스트 팝업
  */
-ModalUtils.openToast = (obj) => {
-  const Wrapper = styled.div`
-    display: flex;
-    align-items: center;
-    padding: 16px;
-  `;
-  const SvgBox = styled.div``;
-  const TextBox = styled.div`
-    margin-left: 8px;
-  `;
-  const Text = styled.p`
-    font: var(--body14);
-    font-weight: 400;
-    color: white;
-  `;
+let toastTimeOutId = -1;
+let isOpenToastPopup = null;
+const renderToastPopup = (props) => {
+  const modal = document.getElementById("toast-popup");
+  ReactDOM.render(<ToastPopup {...props}></ToastPopup>, modal);
+};
+ModalUtils.openToastPopup = (obj) => {
+  let props = { ...obj };
+  let delay = 0;
+  props.onRequestClose = () => renderToastPopup({ ...props, isOpen: false });
 
-  const getSvg = (type) => {
-    switch (type) {
-      case "success":
-        return (
-          <SuccessSvg
-            width="24px"
-            height="24px"
-            color="var(--green500)"
-          ></SuccessSvg>
-        );
-      case "error":
-        return (
-          <WarningSvg
-            width="24px"
-            height="24px"
-            color="var(--red500)"
-          ></WarningSvg>
-        );
-      case "etc":
-        return <InfoSvg width="24px" height="24px" color="white"></InfoSvg>;
-      default:
-        return null;
-    }
-  };
+  if (isOpenToastPopup) {
+    delay = 100;
+    isOpenToastPopup = false;
+  } else {
+    delay = 0;
+    isOpenToastPopup = null;
+  }
 
-  toast.dismiss();
-  toast.clearWaitingQueue();
+  renderToastPopup({ ...props, isOpen: isOpenToastPopup });
+  clearTimeout(toastTimeOutId);
+  setTimeout(() => {
+    isOpenToastPopup = true;
+    renderToastPopup({ ...props, isOpen: isOpenToastPopup });
+  }, delay);
 
-  toast(() => {
-    return (
-      <Wrapper>
-        <SvgBox>{getSvg(obj.type) && getSvg(obj.type)}</SvgBox>
-        <TextBox>
-          {obj.message?.split("\n").map((message, key) => (
-            <Text key={key} width={obj.width}>
-              {message}
-            </Text>
-          ))}
-        </TextBox>
-      </Wrapper>
-    );
-  });
+  toastTimeOutId = setTimeout(() => {
+    isOpenToastPopup = false;
+    renderToastPopup({ ...props, isOpen: isOpenToastPopup });
+  }, 2000);
 };
 
 export default ModalUtils;

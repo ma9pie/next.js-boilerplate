@@ -93,7 +93,14 @@ const Wrapper = styled.div`
   border-radius: 25px 25px 0px 0px;
   padding: 36px 24px;
   max-height: 100vh;
-  /* overscroll-behavior: contain; */
+  & * {
+    overscroll-behavior: contain;
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    scrollbar-width: none; /* 파이어폭스 */
+    &::-webkit-scrollbar {
+      display: none; /* 크롬, 사파리, 오페라, 엣지 */
+    }
+  }
 `;
 const Top = styled.div`
   display: flex;

@@ -139,7 +139,7 @@ export default function Document() {
       <body>
         <div id="modal"></div>
         <div id="bottom-sheet"></div>
-        <div id="toast"></div>
+        <div id="toast-popup"></div>
         <div id="confirm-modal"></div>
         <div id="alert-modal"></div>
         <Main />

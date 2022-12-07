@@ -82,9 +82,9 @@ function Components() {
       <ButtonBox>
         <MediumButton
           onClick={() => {
-            ModalUtils.openToast({
+            ModalUtils.openToastPopup({
               type: "error",
-              message: "실제 주문금액이 최소 주문금액보다 적습니다.",
+              message: "상품 정보가 존재하지 않습니다.",
             });
           }}
         >
@@ -92,9 +92,9 @@ function Components() {
         </MediumButton>
         <MediumButton
           onClick={() => {
-            ModalUtils.openToast({
+            ModalUtils.openToastPopup({
               type: "success",
-              message: "즐겨찾기에 등록되었습니다.",
+              message: "장바구니에 등록되었습니다.",
             });
           }}
         >
@@ -104,7 +104,7 @@ function Components() {
       <ButtonBox>
         <MediumButton
           onClick={() => {
-            ModalUtils.openToast({
+            ModalUtils.openToastPopup({
               type: "etc",
               message: "로그인 후 이용해주세요.",
             });
@@ -114,29 +114,15 @@ function Components() {
         </MediumButton>
         <MediumButton
           onClick={() => {
-            ModalUtils.openToast({
+            ModalUtils.openToastPopup({
               type: "error",
-              message: `캐셔레스트 본인 지갑으로는\n 출금할 수 없습니다.`,
+              message: `해당 이벤트는 종료된 이벤트 입니다.\n 공지사항을 확인해주세요.`,
             });
           }}
         >
           Message 2 lines Toast
         </MediumButton>
       </ButtonBox>
-      <ButtonBox>
-        <MediumButton
-          onClick={() => {
-            ModalUtils.openToast({
-              type: "error",
-              message:
-                "캐셔레스트 본인 지갑으로는 출금할 수 없습니다. 다른 지갑 주소로 출금 신청을 해주시길 바랍니다.",
-            });
-          }}
-        >
-          Message 3 lines Toast
-        </MediumButton>
-      </ButtonBox>
-
       <Title>BottomSheet</Title>
       <ButtonBox>
         <MediumButton
