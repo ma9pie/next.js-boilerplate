@@ -100,8 +100,8 @@ const Container = styled.div`
   margin-bottom: 60px;
 `;
 const GridBox = styled.div`
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   display: grid;
   grid-template-rows: repeat(5, 1fr);
   grid-template-columns: repeat(5, 1fr);
@@ -113,7 +113,7 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   font: var(--caption10);
-  background-color: var(--disableBtn);
+  background-color: var(--textBox);
   text-align: center;
   word-break: keep-all;
   border-radius: 5px;

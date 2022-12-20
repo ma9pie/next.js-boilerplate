@@ -7,9 +7,9 @@ function LineInput(props) {
 
   const lineColor = () => {
     if (props.errorMsg) {
-      return "var(--red100)";
+      return "var(--red500)";
     } else if (props.status === "SUCCESS") {
-      return "var(--green100)";
+      return "var(--green500)";
     } else if (isFocus) {
       return "var(--brandColor)";
     } else {
@@ -82,5 +82,5 @@ const Line = styled.div`
 `;
 const ErrorMsg = styled.p`
   font: var(--label12);
-  color: var(--red100);
+  color: var(--red500);
 `;

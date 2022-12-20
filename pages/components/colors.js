@@ -6,6 +6,16 @@ function Components() {
   return (
     <Wrapper>
       <ColorContainer>
+        <Title>Brand Color</Title>
+        <Grid>
+          <ColorBox>
+            <Color color="var(--brandColor)"></Color>
+            <Text>Brand Color</Text>
+          </ColorBox>
+        </Grid>
+      </ColorContainer>
+
+      <ColorContainer>
         <Title>Text</Title>
         <Grid>
           <ColorBox>
@@ -15,10 +25,6 @@ function Components() {
           <ColorBox>
             <Color color="var(--sub)"></Color>
             <Text>Sub</Text>
-          </ColorBox>
-          <ColorBox>
-            <Color color="var(--yellowBtn)"></Color>
-            <Text>Yellow Btn</Text>
           </ColorBox>
           <ColorBox>
             <Color color="var(--btn)"></Color>
@@ -54,65 +60,19 @@ function Components() {
       </ColorContainer>
 
       <ColorContainer>
-        <Title>Primary</Title>
+        <Title>Colors</Title>
         <Grid>
           <ColorBox>
-            <Color color="var(--brandColor)"></Color>
-            <Text>Brand Color</Text>
-          </ColorBox>
-          <ColorBox>
-            <Color color="var(--red100)"></Color>
+            <Color color="var(--red500)"></Color>
             <Text>Red</Text>
           </ColorBox>
           <ColorBox>
-            <Color color="var(--green100)"></Color>
+            <Color color="var(--green500)"></Color>
             <Text>Green</Text>
           </ColorBox>
           <ColorBox>
-            <Color color="var(--blue100)"></Color>
+            <Color color="var(--blue500)"></Color>
             <Text>Blue</Text>
-          </ColorBox>
-        </Grid>
-      </ColorContainer>
-
-      <ColorContainer>
-        <Title>Pri_Sub</Title>
-        <Grid>
-          <ColorBox>
-            <Color color="var(--red90)"></Color>
-            <Text>Red 90</Text>
-          </ColorBox>
-          <ColorBox>
-            <Color color="var(--green90)"></Color>
-            <Text>Green 90</Text>
-          </ColorBox>
-          <ColorBox>
-            <Color color="var(--blue90)"></Color>
-            <Text>Blue 90</Text>
-          </ColorBox>
-          <ColorBox>
-            <Color color="var(--red20)"></Color>
-            <Text>Red 20</Text>
-          </ColorBox>
-          <ColorBox>
-            <Color color="var(--green20)"></Color>
-            <Text>Green 20</Text>
-          </ColorBox>
-          <ColorBox>
-            <Color color="var(--blue20)"></Color>
-            <Text>Blue 20</Text>
-          </ColorBox>
-          <ColorBox>
-            <Color color="var(--red10)"></Color>
-            <Text>Red 10</Text>
-          </ColorBox>
-          <ColorBox>
-            <Color color="var(--green10)"></Color>
-            <Text>Green 10</Text>
-          </ColorBox>
-          <ColorBox>
-            <Color color="var(--blue10)"></Color>
-            <Text>Blue 10</Text>
           </ColorBox>
         </Grid>
       </ColorContainer>

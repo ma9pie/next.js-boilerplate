@@ -47,7 +47,6 @@ function ConfirmModal(props) {
             {props.cancleBtnText}
           </Button>
           <Button
-            color="var(--yellowBtn)"
             backgroundColor="var(--brandColor)"
             onClick={() => {
               doubleClickPrevention(() => props.onRequestConfirm(), 200);
@@ -91,14 +90,15 @@ const Text = styled.p`
 `;
 const ButtonBox = styled.div`
   display: flex;
+  height: 50px;
 `;
 const Button = styled.div`
   font: var(--label12);
   width: 100%;
-  height: 50px;
-  line-height: 50px;
+  line-height: 46px;
   text-align: center;
   color: ${(props) => props.color};
   background-color: ${(props) => props.backgroundColor};
+  border: ${(props) => `2px solid ${props.backgroundColor}`};
   cursor: pointer;
 `;

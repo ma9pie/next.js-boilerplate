@@ -67,7 +67,7 @@ function Components() {
     const path = `import ${SvgName} from "@/svg/${SvgName}";`;
     setClipboard(path);
     navigator.clipboard.writeText(path);
-    ModalUtils.openToast({
+    ModalUtils.openToastPopup({
       type: "success",
       message: "경로가 클립보드에 복사되었습니다.",
     });
