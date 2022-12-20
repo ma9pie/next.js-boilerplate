@@ -15,10 +15,17 @@ function Header() {
             </LinkBox>
           </a>
         </Link>
-        <Link href="/" passHref>
+        <Link href="/about" passHref>
           <a>
             <LinkBox>
               <LinkText>ABOUT</LinkText>
+            </LinkBox>
+          </a>
+        </Link>
+        <Link href="/components" passHref>
+          <a>
+            <LinkBox>
+              <LinkText>COMPONENTS</LinkText>
             </LinkBox>
           </a>
         </Link>

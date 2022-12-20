@@ -3,27 +3,19 @@ import Axios from "axios";
 import React, { useEffect } from "react";
 import CommonLayoput from "@/layouts/CommonLayout";
 
-function Home() {
+function About() {
   useEffect(() => {
     Axios.get("/api/test").then((res) => {
       console.log(res.data);
     });
   }, []);
-  return (
-    <Wrapper>
-      {Array(1)
-        .fill()
-        .map((item, key) => (
-          <Test key={key}>index</Test>
-        ))}
-    </Wrapper>
-  );
+  return <Wrapper>About</Wrapper>;
 }
 const Wrapper = styled.div``;
 
-export default Home;
+export default About;
 
-Home.getLayout = function getLayout(page) {
+About.getLayout = function getLayout(page) {
   return <CommonLayoput>{page}</CommonLayoput>;
 };
 
