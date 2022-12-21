@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     case "GET":
       try {
         const headers = {
-          "x-apisecret": "fe5183cc3dea12bd0ce299cf110a75a2",
+          "x-apisecret": "요기요 api 키",
           "x-apikey": "iphoneap",
         };
 

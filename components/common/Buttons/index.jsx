@@ -1,49 +1,40 @@
 import { css, cx } from "@emotion/css";
 import styled from "@emotion/styled";
 import React from "react";
-import Ripple from "@/components/common/Ripple";
 
 const Buttons = (props) => {
-  return (
-    <Wrapper {...props}>
-      <ButtonWrapper>
-        {(() => {
-          if (props.disabled) {
-            return (
-              <Button
-                {...props}
-                backgroundColor="var(--disabled)"
-                cursor="auto"
-              >
-                <Children>{props.children}</Children>
-              </Button>
-            );
-          } else if (props.type === "sub") {
-            return (
-              <Ripple {...props}>
-                <Button
-                  {...props}
-                  color="var(--main)"
-                  backgroundColor="var(--textBox)"
-                  border="1px solid var(--sectionLine)"
-                >
-                  <Children {...props}>{props.children}</Children>
-                </Button>
-              </Ripple>
-            );
-          } else {
-            return (
-              <Ripple {...props}>
-                <Button {...props}>
-                  <Children {...props}>{props.children}</Children>
-                </Button>
-              </Ripple>
-            );
-          }
-        })()}
-      </ButtonWrapper>
-    </Wrapper>
-  );
+  // disabled button
+  if (props.disabled) {
+    return (
+      <Button
+        {...props}
+        disabled
+        backgroundColor="var(--disabled)"
+        pressedBackgroundColor="var(--disabled)"
+        cursor="auto"
+      >
+        {props.children}
+      </Button>
+    );
+  }
+  // sub button
+  else if (props.type === "sub") {
+    return (
+      <Button
+        {...props}
+        color="var(--main)"
+        border="1px solid var(--sectionLine)"
+        backgroundColor="var(--textBox)"
+        pressedBackgroundColor="var(--pressedSubBtn)"
+      >
+        {props.children}
+      </Button>
+    );
+  }
+  // main button
+  else {
+    return <Button {...props}>{props.children}</Button>;
+  }
 };
 
 export default Buttons;
@@ -58,19 +49,11 @@ Buttons.defaultProps = {
   borderRadius: "5px",
   color: "white",
   backgroundColor: "var(--blue700)",
+  pressedBackgroundColor: "var(--pressedMainBtn)",
   cursor: "pointer",
-  disabled: false,
   onClick: () => {},
 };
 
-const Wrapper = styled.div`
-  overflow: hidden;
-  width: ${(props) => props.width};
-  border-radius: ${(props) => props.borderRadius};
-`;
-const ButtonWrapper = styled.span`
-  position: relative;
-`;
 const Button = styled.button`
   font: ${(props) => props.font};
   font-weight: ${(props) => props.fontWeight};
@@ -83,26 +66,12 @@ const Button = styled.button`
   border: ${(props) => props.border};
   border-radius: ${(props) => props.borderRadius};
   color: ${(props) => props.color};
-  background-color: ${(props) => props.backgroundColor} !important;
-  cursor: ${(props) => props.cursor};
+  background-color: ${(props) => props.backgroundColor};
   text-align: center;
   white-space: nowrap;
   transition: background-color 0.2s ease;
-
-  &:hover {
+  cursor: ${(props) => props.cursor};
+  &:active {
+    background-color: ${(props) => props.pressedBackgroundColor};
   }
-`;
-const Children = styled.div`
-  width: 100%;
-  height: 100%;
-  line-height: ${(props) => props.height};
-  color: inherit;
-  background-color: transparent;
-  & * {
-    background-color: inherit;
-  }
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 `;

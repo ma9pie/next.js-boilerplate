@@ -4,7 +4,7 @@ import React from "react";
 function TextButton(props) {
   return (
     <Text
-      color={props.type === "sub" ? "var(--sub)" : "var(--blue500)"}
+      color={props.type === "sub" ? "var(--sub)" : "var(--brandColor)"}
       onClick={props.onClick}
     >
       {props.children}
