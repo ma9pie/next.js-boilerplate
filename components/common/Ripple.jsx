@@ -29,7 +29,9 @@ function Ripple(props) {
 
   return (
     <Wrapper
-      backgroundColor={props.type === "sub" ? "" : "var(--blue400)"}
+      backgroundColor={
+        props.type === "sub" ? "var(--sectionLine)" : "var(--blue400)"
+      }
       onMouseDown={createRipple}
       onMouseUp={deleteRipple}
       onMouseLeave={deleteRipple}

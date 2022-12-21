@@ -6,7 +6,7 @@ import Ripple from "@/components/common/Ripple";
 const Buttons = (props) => {
   return (
     <Wrapper {...props}>
-      <Ripple type={props.type}>
+      <ButtonWrapper>
         {(() => {
           if (props.disabled) {
             return (
@@ -20,19 +20,28 @@ const Buttons = (props) => {
             );
           } else if (props.type === "sub") {
             return (
-              <Button {...props} backgroundColor="var(--textBox)">
-                <Children>{props.children}</Children>
-              </Button>
+              <Ripple {...props}>
+                <Button
+                  {...props}
+                  color="var(--main)"
+                  backgroundColor="var(--textBox)"
+                  border="1px solid var(--sectionLine)"
+                >
+                  <Children {...props}>{props.children}</Children>
+                </Button>
+              </Ripple>
             );
           } else {
             return (
-              <Button {...props}>
-                <Children>{props.children}</Children>
-              </Button>
+              <Ripple {...props}>
+                <Button {...props}>
+                  <Children {...props}>{props.children}</Children>
+                </Button>
+              </Ripple>
             );
           }
         })()}
-      </Ripple>
+      </ButtonWrapper>
     </Wrapper>
   );
 };
@@ -54,14 +63,14 @@ Buttons.defaultProps = {
   onClick: () => {},
 };
 
-const Wrapper = styled.span`
-  position: relative;
+const Wrapper = styled.div`
   overflow: hidden;
-  background-color: transparent;
   width: ${(props) => props.width};
   border-radius: ${(props) => props.borderRadius};
 `;
-
+const ButtonWrapper = styled.span`
+  position: relative;
+`;
 const Button = styled.button`
   font: ${(props) => props.font};
   font-weight: ${(props) => props.fontWeight};
@@ -74,17 +83,24 @@ const Button = styled.button`
   border: ${(props) => props.border};
   border-radius: ${(props) => props.borderRadius};
   color: ${(props) => props.color};
-  background-color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props.backgroundColor} !important;
   cursor: ${(props) => props.cursor};
   text-align: center;
   white-space: nowrap;
   transition: background-color 0.2s ease;
+
   &:hover {
   }
 `;
 const Children = styled.div`
-  z-index: 1;
+  width: 100%;
+  height: 100%;
+  line-height: ${(props) => props.height};
+  color: inherit;
   background-color: transparent;
+  & * {
+    background-color: inherit;
+  }
   position: absolute;
   top: 50%;
   left: 50%;

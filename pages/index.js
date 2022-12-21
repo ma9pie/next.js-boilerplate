@@ -8,6 +8,9 @@ function Home() {
     Axios.get("/api/test").then((res) => {
       console.log(res.data);
     });
+    // Axios.get("/api/yogiyo").then((res) => {
+    //   console.log(res.data);
+    // });
   }, []);
   return (
     <Wrapper>

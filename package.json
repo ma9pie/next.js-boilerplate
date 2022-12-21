@@ -36,5 +36,6 @@
     "babel-plugin-transform-remove-console": "^6.9.4",
     "eslint": "8.26.0",
     "eslint-config-next": "12.3.1"
-  }
+  },
+  "proxy": "https://www.yogiyo.co.kr"
 }
