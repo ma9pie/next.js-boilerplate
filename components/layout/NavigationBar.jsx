@@ -13,10 +13,10 @@ function NavigationBar() {
   const router = useRouter();
   const menuList = [
     { name: "홈", url: "/" },
-    { name: "거래소", url: "trade" },
-    { name: "자산", url: "balance" },
-    { name: "거래내역", url: "tradeHistory" },
-    { name: "더보기", url: "viewMore" },
+    { name: "거래소", url: "/" },
+    { name: "자산", url: "/" },
+    { name: "거래내역", url: "/" },
+    { name: "더보기", url: "/" },
   ];
   const [pathname, setPathname] = useState("/");
   const [isIOS, setIsIOS] = useState(false);
@@ -58,18 +58,14 @@ function NavigationBar() {
     <Wrapper>
       {menuList.map((item, key) => (
         <LinkBox key={key} marginBottom={isIOS ? "34px" : "0px"}>
-          <Link href={item.url}>
-            <a>
-              <Ripple>
-                {(() => getSvg(item))()}
-                <LinkText
-                  color={pathname === item.url ? "var(--main)" : "var(--sub)"}
-                >
-                  {item.name}
-                </LinkText>
-              </Ripple>
-            </a>
-          </Link>
+          <Ripple>
+            {(() => getSvg(item))()}
+            <LinkText
+              color={pathname === item.url ? "var(--main)" : "var(--sub)"}
+            >
+              {item.name}
+            </LinkText>
+          </Ripple>
         </LinkBox>
       ))}
     </Wrapper>

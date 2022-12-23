@@ -1,41 +1,53 @@
 import styled from "@emotion/styled";
-import React, { useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
+
+const useDebouncedRippleCleanUp = (rippleCount, duration, cleanUpFunction) => {
+  useLayoutEffect(() => {
+    let bounce = null;
+    if (rippleCount > 0) {
+      clearTimeout(bounce);
+
+      bounce = setTimeout(() => {
+        cleanUpFunction();
+        clearTimeout(bounce);
+      }, duration * 4);
+    }
+
+    return () => clearTimeout(bounce);
+  }, [rippleCount, duration, cleanUpFunction]);
+};
 
 function Ripple(props) {
+  const { duration, color } = props;
   const [rippleArray, setRippleArray] = useState([]);
+
+  useDebouncedRippleCleanUp(rippleArray.length, duration, () => {
+    setRippleArray([]);
+  });
 
   const createRipple = (e) => {
     const rippleContainer = e.currentTarget.getBoundingClientRect();
+    const size =
+      rippleContainer.width > rippleContainer.height
+        ? rippleContainer.width
+        : rippleContainer.height;
 
     const { width, height } = rippleContainer;
 
-    const diameter = Math.sqrt(width * width + height * height);
-
-    const x = (width - diameter) / 2;
-    const y = (height - diameter) / 2;
+    const x = (width - size) / 2;
+    const y = (height - size) / 2;
 
     const ripple = {
       x,
       y,
-      diameter,
+      size,
     };
 
     setRippleArray([...rippleArray, ripple]);
   };
 
-  const deleteRipple = () => {
-    setRippleArray([]);
-  };
-
   return (
-    <Wrapper
-      backgroundColor={
-        props.type === "sub" ? "var(--sectionLine)" : "var(--blue400)"
-      }
-      onMouseDown={createRipple}
-      onMouseUp={deleteRipple}
-      onMouseLeave={deleteRipple}
-    >
+    <Wrapper duration={duration} color={color} onMouseDown={createRipple}>
       {rippleArray.length > 0 &&
         rippleArray.map((ripple, index) => {
           return (
@@ -44,8 +56,8 @@ function Ripple(props) {
               style={{
                 top: ripple.y,
                 left: ripple.x,
-                width: ripple.diameter,
-                height: ripple.diameter,
+                width: ripple.size,
+                height: ripple.size,
               }}
             />
           );
@@ -57,23 +69,40 @@ function Ripple(props) {
 
 export default Ripple;
 
-Ripple.defaultProps = {};
+Ripple.defaultProps = {
+  duration: 200,
+  color: "var(--textBox)",
+};
 
 const Wrapper = styled.div`
-  background-color: transparent;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
   span {
     transform: scale(0);
     border-radius: 100%;
     position: absolute;
-    background-color: ${(props) => props.backgroundColor};
-    animation: ripple 0.1s ease forwards;
+    opacity: 0.75;
+    background-color: ${(props) => props.color};
+    animation-name: ripple;
+    animation-duration: ${(props) => props.duration}ms;
   }
+
   @keyframes ripple {
     from {
-      transform: scale(0.5);
+      opacity: 1;
+      transform: scale(0.8);
     }
     to {
-      transform: scale(1);
+      opacity: 0;
+      transform: scale(3);
     }
   }
 `;

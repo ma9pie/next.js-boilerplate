@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import Theme from "@/components/common/Theme";
-import NavigationBar from "@/components/layout/NavigationBar";
 import CloseSvg from "@/svg/CloseSvg";
 import ViewMoreSvg from "@/svg/ViewMoreSvg";
 
@@ -60,6 +59,10 @@ function ComponentsLayout(props) {
     {
       title: "Svg",
       url: "/components/svg",
+    },
+    {
+      title: "NavigationBar",
+      url: "/components/navigationBar",
     },
   ];
 
@@ -128,9 +131,6 @@ function ComponentsLayout(props) {
 
       {/* 본문 */}
       <Content>{props.children}</Content>
-
-      {/* 네비게이션바 */}
-      {/* <NavigationBar></NavigationBar> */}
     </Wrapper>
   );
 }
