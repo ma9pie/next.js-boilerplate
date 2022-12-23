@@ -5,6 +5,7 @@
       "@/components/*": ["components/*"],
       "@/layouts/*": ["layouts/*"],
       "@/api/*": ["pages/api/*"],
+      "@/firebase/*": ["firebase/*"],
       "@/recoil/*": ["recoil/*"],
       "@/hooks/*": ["hooks/*"],
       "@/utils/*": ["utils/*"],

@@ -14,55 +14,59 @@ function ComponentsLayout(props) {
   const pageList = [
     {
       title: "Index",
-      url: "/components",
+      url: "/laboratory",
     },
     {
       title: "Typography",
-      url: "/components/typo",
+      url: "/laboratory/typo",
     },
     {
       title: "Colors",
-      url: "/components/colors",
+      url: "/laboratory/colors",
     },
     {
       title: "Buttons",
-      url: "/components/buttons",
+      url: "/laboratory/buttons",
     },
     {
       title: "Carousel",
-      url: "/components/carousel",
+      url: "/laboratory/carousel",
     },
     {
       title: "Modals",
-      url: "/components/modals",
+      url: "/laboratory/modals",
     },
     {
       title: "Inputs",
-      url: "/components/inputs",
+      url: "/laboratory/inputs",
     },
     {
       title: "CheckBox",
-      url: "/components/checkbox",
+      url: "/laboratory/checkbox",
     },
     {
       title: "Toggle",
-      url: "/components/toggle",
+      url: "/laboratory/toggle",
     },
     {
       title: "Tooltips",
-      url: "/components/tooltips",
+      url: "/laboratory/tooltips",
     },
     {
       title: "Icons",
-      url: "/components/icons",
+      url: "/laboratory/icons",
     },
     {
       title: "Svg",
-      url: "/components/svg",
+      url: "/laboratory/svg",
     },
     {
       title: "NavigationBar",
-      url: "/components/navigationBar",
+      url: "/laboratory/navigationBar",
+    },
+    {
+      title: "Firebase",
+      url: "/laboratory/firebase",
     },
   ];
 

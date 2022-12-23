@@ -1,28 +1,27 @@
-// Modular Firebase v.9 Initialization.
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getDatabase } from "@firebase/database";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 
-const clientCredentials = {
-    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+// const firebaseConfig = {
+//     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+//     authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+//     projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+//     storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+//     messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+//     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+// };
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDSSRAhLBMo6XuGTfiOwTM5JMk9GVpCSmE",
+  authDomain: "boilerplate-b8f9c.firebaseapp.com",
+  projectId: "boilerplate-b8f9c",
+  storageBucket: "boilerplate-b8f9c.appspot.com",
+  messagingSenderId: "507303788259",
+  appId: "1:507303788259:web:3f86350d42efd5195dcfd6",
+  measurementId: "G-EVSTQRGNF1",
 };
 
-function initFirebase() {
-    if (typeof window !== undefined) {
-        initializeApp(clientCredentials);
-        console.log("Firebase has been init successfully");
-    }
-}
+firebase.initializeApp(firebaseConfig);
 
-const app = initializeApp(clientCredentials);
+const firestore = firebase.firestore();
 
-const db = getFirestore(app);
-
-const realDB = getDatabase(app);
-
-export { initFirebase, db, realDB };
+export { firestore };
