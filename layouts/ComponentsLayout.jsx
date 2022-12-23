@@ -30,8 +30,8 @@ function ComponentsLayout(props) {
       url: "/components/buttons",
     },
     {
-      title: "Banner",
-      url: "/components/banner",
+      title: "Carousel",
+      url: "/components/carousel",
     },
     {
       title: "Modals",

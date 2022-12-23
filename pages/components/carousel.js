@@ -35,6 +35,14 @@ function Component() {
           <MobileBanner backgroundColor="#DC0BDE"></MobileBanner>
           <MobileBanner backgroundColor="#FA890D"></MobileBanner>
         </Carousel>
+
+        <CarouselWrapper>
+          <Carousel slidesPerView={"auto"} spaceBetween={8} freeMode={true}>
+            {[...new Array(10)].map((item, key) => (
+              <Box key={key}></Box>
+            ))}
+          </Carousel>
+        </CarouselWrapper>
       </CarouselContainer>
     </Wrapper>
   );
@@ -61,4 +69,19 @@ const MobileBanner = styled.div`
   width: 200px;
   height: 60px;
   background-color: ${(props) => props.backgroundColor};
+`;
+const CarouselWrapper = styled.div`
+  .swiper-slide {
+    width: auto;
+  }
+`;
+const Box = styled.div`
+  display: inline-block;
+  font: var(--caption12);
+  width: 150px;
+  height: 250px;
+  background-color: var(--textBox);
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
 `;

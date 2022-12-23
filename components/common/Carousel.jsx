@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import SwiperCore, { Autoplay, Navigation, Pagination } from "swiper";
+import SwiperCore, { Autoplay, FreeMode, Navigation, Pagination } from "swiper";
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -36,7 +36,10 @@ function Carousel(props) {
         spaceBetween={props.spaceBetween}
         slidesPerView={props.slidesPerView}
         loopAdditionalSlides={props.loopAdditionalSlides}
-        modules={[Autoplay, Pagination, Navigation]}
+        centeredSlides={props.centeredSlides}
+        pagination={props.pagination}
+        freeMode={props.freeMode}
+        modules={[FreeMode, Autoplay, Pagination, Navigation]}
         onSlideChange={(swiper) => {
           props.setTabNum(swiper.activeIndex);
         }}
@@ -72,6 +75,9 @@ Carousel.defaultProps = {
   spaceBetween: 0,
   slidesPerView: 1,
   loopAdditionalSlides: 1,
+  centeredSlides: false,
+  pagination: false,
+  freeMode: false,
   tabNum: undefined,
   children: [],
   setTabNum: () => {},
