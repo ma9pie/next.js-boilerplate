@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import CheckBox from "@/components/common/CheckBox";
-import TestLayout from "@/layouts/ComponentsLayout";
+import ComponentsLayout from "@/layouts/ComponentsLayout";
 
 function Components() {
   const [check1, setCheck1] = useState(true);
@@ -46,7 +46,7 @@ function Components() {
 export default Components;
 
 Components.getLayout = function getLayout(page) {
-  return <TestLayout>{page}</TestLayout>;
+  return <ComponentsLayout>{page}</ComponentsLayout>;
 };
 
 const Wrapper = styled.div`

@@ -8,7 +8,7 @@ import MediumButton from "@/components/common/Buttons/MediumButton";
 import PillButton from "@/components/common/Buttons/PillButton";
 import SmallButton from "@/components/common/Buttons/SmallButton";
 import TextButton from "@/components/common/Buttons/TextButton";
-import TestLayout from "@/layouts/ComponentsLayout";
+import ComponentsLayout from "@/layouts/ComponentsLayout";
 
 function Components() {
   return (
@@ -65,7 +65,7 @@ function Components() {
 export default Components;
 
 Components.getLayout = function getLayout(page) {
-  return <TestLayout>{page}</TestLayout>;
+  return <ComponentsLayout>{page}</ComponentsLayout>;
 };
 
 const Wrapper = styled.div``;

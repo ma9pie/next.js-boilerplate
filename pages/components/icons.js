@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React, { useState } from "react";
 import Tooltip from "@/components/common/Tooltip";
 import QrCodeSvg from "@/components/svg/QrCodeSvg";
-import TestLayout from "@/layouts/ComponentsLayout";
+import ComponentsLayout from "@/layouts/ComponentsLayout";
 import ModalUtils from "@/utils/ModalUtils";
 import AlarmOffSvg from "@/svg/AlarmOffSvg";
 import AlarmOnSvg from "@/svg/AlarmOnSvg";
@@ -237,7 +237,7 @@ function Components() {
 export default Components;
 
 Components.getLayout = function getLayout(page) {
-  return <TestLayout>{page}</TestLayout>;
+  return <ComponentsLayout>{page}</ComponentsLayout>;
 };
 
 const Wrapper = styled.div`

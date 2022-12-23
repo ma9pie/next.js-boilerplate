@@ -7,7 +7,7 @@ import LineInput from "@/components/common/Inputs/LineInput";
 import SearchInput from "@/components/common/Inputs/SearchInput";
 import SelectBox from "@/components/common/Inputs/SelectBox";
 import SelectLine from "@/components/common/Inputs/SelectLine";
-import TestLayout from "@/layouts/ComponentsLayout";
+import ComponentsLayout from "@/layouts/ComponentsLayout";
 import QrCodeSvg from "@/svg/QrCodeSvg";
 import SwitchSvg from "@/svg/SwitchSvg";
 
@@ -55,9 +55,9 @@ function Components() {
           <State>limitInput : {limitInput}</State>
         </StateBox>
         <LimitInput
-          label="지갑주소 별칭"
+          label="닉네임"
           value={limitInput}
-          placeholder="지갑주소 별칭을 입력해주세요."
+          placeholder="닉네임을 입력해주세요."
           onChange={(e) => setLimitInput(e.target.value)}
         ></LimitInput>
       </Container>
@@ -103,23 +103,23 @@ function Components() {
           <State>boxInput : {boxInput}</State>
         </StateBox>
         <BoxInput
-          label="출금 주소"
+          label="주소"
           value={boxInput}
-          placeholder="출금 주소를 입력해주세요"
+          placeholder="주소를 입력해주세요"
           onChange={(e) => setBoxInput(e.target.value)}
         ></BoxInput>
         <BoxInput
-          label="출금 주소"
+          label="주소"
           value={boxInput}
-          placeholder="출금 주소를 입력해주세요"
+          placeholder="주소를 입력해주세요"
           iconSrc={QrCodeSvg}
           onChange={(e) => setBoxInput(e.target.value)}
         ></BoxInput>
         <BoxInput
           disabled={true}
-          label="출금 주소"
+          label="주소"
           value={boxInput}
-          placeholder="출금 주소를 입력해주세요"
+          placeholder="주소를 입력해주세요"
           iconSrc={SwitchSvg}
           onChange={(e) => setBoxInput(e.target.value)}
         ></BoxInput>
@@ -132,7 +132,7 @@ function Components() {
           <Json>{JSON.stringify(selectBoxInput, null, 4)}</Json>
         </StateBox>
         <SelectBox
-          label="거래 자금의 원천"
+          label="소득의 원천"
           value={selectBoxInput}
           setValue={setSelectBoxInput}
           list={[
@@ -142,7 +142,7 @@ function Components() {
             { name: "퇴직소득", value: "4" },
             { name: "양도소득", value: "5" },
           ]}
-          placeholder="자금 원천을 선택해주세요."
+          placeholder="소득의 원천을 선택해주세요."
           iconSrc={SwitchSvg}
         ></SelectBox>
       </Container>
@@ -154,7 +154,7 @@ function Components() {
         </StateBox>
         <SearchInput
           value={searchWord}
-          placeholder="자산 검색"
+          placeholder="검색"
           onChange={(e) => setSearchWord(e.target.value)}
         ></SearchInput>
       </Container>
@@ -165,7 +165,7 @@ function Components() {
 export default Components;
 
 Components.getLayout = function getLayout(page) {
-  return <TestLayout>{page}</TestLayout>;
+  return <ComponentsLayout>{page}</ComponentsLayout>;
 };
 
 const Wrapper = styled.div`

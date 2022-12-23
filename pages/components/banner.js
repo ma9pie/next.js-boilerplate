@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import Carousel from "@/components/common/Carousel";
-import TestLayout from "@/layouts/ComponentsLayout";
+import ComponentsLayout from "@/layouts/ComponentsLayout";
 
 function Component() {
   return (
@@ -43,7 +43,7 @@ function Component() {
 export default Component;
 
 Component.getLayout = function getLayout(page) {
-  return <TestLayout>{page}</TestLayout>;
+  return <ComponentsLayout>{page}</ComponentsLayout>;
 };
 
 const Wrapper = styled.div``;

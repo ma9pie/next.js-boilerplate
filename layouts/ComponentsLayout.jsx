@@ -57,6 +57,10 @@ function ComponentsLayout(props) {
       title: "Icons",
       url: "/components/icons",
     },
+    {
+      title: "Svg",
+      url: "/components/svg",
+    },
   ];
 
   useEffect(() => {
