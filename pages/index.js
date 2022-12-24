@@ -13,11 +13,13 @@ function Home() {
 
   return (
     <Wrapper>
-      {Array(1)
-        .fill()
-        .map((item, key) => (
-          <Test key={key}>index</Test>
-        ))}
+      <Content>
+        {Array(1)
+          .fill()
+          .map((item, key) => (
+            <Test key={key}>index</Test>
+          ))}
+      </Content>
     </Wrapper>
   );
 }
@@ -29,6 +31,13 @@ Home.getLayout = function getLayout(page) {
   return <CommonLayoput>{page}</CommonLayoput>;
 };
 
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 0px;
+`;
 const Test = styled.div`
   font: var(--headline24);
 `;
