@@ -18,6 +18,7 @@
 - react-query
 - recoil
 - 구글 애널리틱스 연결
+- firebase 연결 및 유저 조회, 생성, 삭제 구현
 - 공통 컴포넌트 연구실 (https://next-js-project-boilerplate.vercel.app/laboratory)
   - Buttons
   - Carousel
@@ -44,6 +45,8 @@
 ![image](https://user-images.githubusercontent.com/115917964/208724499-5f3184dc-0489-45a1-a6ee-a488ba9c44a6.png)
 ![image](https://user-images.githubusercontent.com/115917964/208715589-747e03cb-f380-4262-a2c8-9708705f45b9.png)
 
+![image](https://user-images.githubusercontent.com/115917964/209440144-6b54e0b6-ee46-46f2-beb8-7e854577fc69.png)
+![image](https://user-images.githubusercontent.com/115917964/209440192-9f1cd6b1-bb2e-4734-98e1-9c37800b2fd9.png)
 
 
 ## 📚 Package
