@@ -1,10 +1,16 @@
 # 🚀 Project boilerplate
 
-🔗 https://next-js-boilerplate-ma9pie.vercel.app
+🔗 https://next-js-project-boilerplate.vercel.app
 
 퇴근 후 집에서 취미로 사이드 프로젝트 개발을 하면서  
 새로운 프로젝트를 생성할 때마다 세팅에 시간이 많이 소요되어  
 자주 사용하는 것들을 정리해놓은 보일러 플레이트입니다.  
+
+![image](https://user-images.githubusercontent.com/115917964/209440788-070e7d35-317c-4948-969e-02e3d67939ce.png)
+
+GNB에서 기술 연구실(laboratory 탭)은 새로운 라이브러리를 사용해보거나  
+새로운 컴포넌트들을 생성하고 테스트하는 곳입니다.  
+빠른 사용을 위한 예제를 작성해 놓았습니다.  
 
 ## 📖 Content
 - 레이아웃
@@ -18,7 +24,8 @@
 - react-query
 - recoil
 - 구글 애널리틱스 연결
-- 공통 컴포넌트 연구실 (https://next-js-boilerplate-ma9pie.vercel.app/components)
+- firebase 연결 및 유저 조회, 생성, 삭제 구현
+- 기술 연구실 (https://next-js-project-boilerplate.vercel.app/laboratory)
   - Buttons
   - Carousel
   - Modals(Alert, Confirm, Toast, BottomSheet)
@@ -44,6 +51,8 @@
 ![image](https://user-images.githubusercontent.com/115917964/208724499-5f3184dc-0489-45a1-a6ee-a488ba9c44a6.png)
 ![image](https://user-images.githubusercontent.com/115917964/208715589-747e03cb-f380-4262-a2c8-9708705f45b9.png)
 
+![image](https://user-images.githubusercontent.com/115917964/209440144-6b54e0b6-ee46-46f2-beb8-7e854577fc69.png)
+![image](https://user-images.githubusercontent.com/115917964/209440192-9f1cd6b1-bb2e-4734-98e1-9c37800b2fd9.png)
 
 
 ## 📚 Package
