@@ -1,6 +1,6 @@
 # 🚀 Project boilerplate
 
-🔗 https://next-js-project-boilerplate.vercel.app/
+🔗 https://next-js-project-boilerplate.vercel.app
 
 퇴근 후 집에서 취미로 사이드 프로젝트 개발을 하면서  
 새로운 프로젝트를 생성할 때마다 세팅에 시간이 많이 소요되어  
