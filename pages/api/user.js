@@ -1,30 +1,44 @@
-import { database, firestore } from "@/firebase/initFirebase";
-import Axios from "axios";
+import { firestore } from "@/firebase/initFirebase";
 import "firebase/database";
-import { onValue, ref } from "firebase/database";
+import moment from "moment";
 
 export default async function handler(req, res) {
   const { method, query, body } = req;
 
   switch (method) {
+    // Read
     case "GET":
       try {
-        const user = await firestore
-          .collection("user")
-          .get()
-          .then((snapshot) => snapshot.docs.map((doc) => doc.data()));
+        let user = null;
+        // get all
+        if (!query.id) {
+          user = await firestore
+            .collection("user")
+            .orderBy("createdAt", "asc")
+            .get()
+            .then((snapshot) =>
+              snapshot.docs.map((doc) => {
+                return { ...doc.data(), key: doc.id };
+              })
+            );
+        }
+        // get one
+        else {
+          user = await firestore
+            .collection("user")
+            .where("id", "==", query.id)
+            .get()
+            .then((snapshot) => snapshot.docs[0].data());
+        }
         res.status(200).json(user);
       } catch (error) {
         res.status(400).json({ success: false });
       }
       break;
 
+    // Create
     case "POST":
       try {
-        if (!body.id) {
-          res.status(200).json({ message: "유효하지 않은 id 값 입니다." });
-          return;
-        }
         const isExists = await firestore
           .collection("user")
           .doc(body.id)
@@ -34,32 +48,24 @@ export default async function handler(req, res) {
           res.status(200).json({ message: "이미 존재하는 id 입니다." });
           return;
         }
-        firestore.collection("user").doc(body.id).set(body);
-        res.status(200).json(body);
+
+        const createdAt = moment().format("YYYY-MM-DD HH:mm:ss");
+
+        await firestore
+          .collection("user")
+          .doc()
+          .set({ ...body, createdAt: createdAt });
+        res.status(200).json({ success: true });
       } catch (error) {
         res.status(400).json({ success: false });
       }
       break;
 
-    case "PUT":
-      try {
-        if (!body.id) {
-          res.status(200).json({ message: "유효하지 않은 id 값 입니다." });
-          return;
-        }
-        const user = firestore.collection("user").doc(body.id);
-        user.set({ name: "test", password: "1234" });
-        res.status(200).json(body);
-      } catch (error) {
-        res.status(400).json({ success: false });
-      }
-      break;
-
+    // Delete
     case "DELETE":
       try {
-        firestore.collection("user").add(body);
-
-        res.status(200).json(body);
+        await firestore.collection("user").doc(body.key).delete();
+        res.status(200).json({ success: true });
       } catch (error) {
         res.status(400).json({ success: false });
       }

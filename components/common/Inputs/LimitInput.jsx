@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import React, { useState } from "react";
 
 function LimitInput(props) {
-  const [value, setValue] = useState("");
   const [isFocus, setIsFocus] = useState(false);
 
   const lineColor = () => {
@@ -15,7 +14,6 @@ function LimitInput(props) {
 
   const checkTextlimit = (e) => {
     if (e.target.value.length <= props.limit) {
-      setValue(e.target.value);
       props.onChange(e);
     }
   };
@@ -28,7 +26,7 @@ function LimitInput(props) {
           type={props.type}
           name={props.name}
           placeholder={props.placeholder}
-          value={value}
+          value={props.value}
           readOnly={props.readOnly}
           onChange={checkTextlimit}
           onFocus={() => {
@@ -42,7 +40,7 @@ function LimitInput(props) {
             }
           }}
         ></Input>
-        <Limit>{`${value.length}/${props.limit}`}</Limit>
+        <Limit>{`${props.value.length}/${props.limit}`}</Limit>
       </InputContainer>
 
       <Line backgroundColor={lineColor}></Line>

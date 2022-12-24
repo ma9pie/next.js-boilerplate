@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import React, { useState } from "react";
 
 function LineInput(props) {
-  const [value, setValue] = useState("");
   const [isFocus, setIsFocus] = useState(false);
 
   const lineColor = () => {
@@ -24,10 +23,9 @@ function LineInput(props) {
         type={props.type}
         name={props.name}
         placeholder={props.placeholder}
-        value={value}
+        value={props.value}
         readOnly={props.readOnly}
         onChange={(e) => {
-          setValue(e.target.value);
           props.onChange(e);
         }}
         onFocus={() => {

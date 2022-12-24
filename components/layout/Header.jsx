@@ -22,10 +22,10 @@ function Header() {
             </LinkBox>
           </a>
         </Link>
-        <Link href="/components" passHref>
+        <Link href="/laboratory" passHref>
           <a>
             <LinkBox>
-              <LinkText>COMPONENTS</LinkText>
+              <LinkText>LABORATORY</LinkText>
             </LinkBox>
           </a>
         </Link>

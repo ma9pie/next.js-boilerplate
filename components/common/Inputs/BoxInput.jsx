@@ -3,7 +3,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 function BoxInput(props) {
-  const [value, setValue] = useState("");
   const [isFocus, setIsFocus] = useState(false);
 
   return (
@@ -11,19 +10,16 @@ function BoxInput(props) {
       <Label>{props.label}</Label>
       <InputBox
         borderColor={isFocus ? "var(--brandColor)" : "transparent"}
-        backgroundColor={
-          props.disabled ? "var(--disableBtn)" : "var(--textBox)"
-        }
+        backgroundColor={props.disabled ? "var(--disabled)" : "var(--textBox)"}
       >
         <Input
           type={props.type}
           name={props.name}
           placeholder={props.placeholder}
-          value={value}
+          value={props.value}
           disabled={props.disabled}
           readOnly={props.readOnly}
           onChange={(e) => {
-            setValue(e.target.value);
             props.onChange(e);
           }}
           onFocus={() => {

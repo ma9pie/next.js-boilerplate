@@ -4,8 +4,6 @@ import DeleteSvg from "@/svg/DeleteSvg";
 import SearchSvg from "@/svg/SearchSvg";
 
 function SearchInput(props) {
-  const [value, setValue] = useState("");
-
   return (
     <Wrapper width={props.width}>
       <InputContainer>
@@ -17,13 +15,12 @@ function SearchInput(props) {
           type={props.type}
           name={props.name}
           placeholder={props.placeholder}
-          value={value}
+          value={props.value}
           onChange={(e) => {
-            setValue(e.target.value);
             props.onChange(e);
           }}
         ></Input>
-        {value && (
+        {props.value && (
           <Icon
             onClick={(e) => {
               setValue("");

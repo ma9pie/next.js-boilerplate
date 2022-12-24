@@ -8,8 +8,6 @@ import SearchInput from "@/components/common/Inputs/SearchInput";
 import SelectBox from "@/components/common/Inputs/SelectBox";
 import SelectLine from "@/components/common/Inputs/SelectLine";
 import ComponentsLayout from "@/layouts/ComponentsLayout";
-import QrCodeSvg from "@/svg/QrCodeSvg";
-import SwitchSvg from "@/svg/SwitchSvg";
 
 function Components() {
   const [lineInput, setLineInput] = useState("");
@@ -109,23 +107,15 @@ function Components() {
           onChange={(e) => setBoxInput(e.target.value)}
         ></BoxInput>
         <BoxInput
-          label="주소"
-          value={boxInput}
-          placeholder="주소를 입력해주세요"
-          iconSrc={QrCodeSvg}
-          onChange={(e) => setBoxInput(e.target.value)}
-        ></BoxInput>
-        <BoxInput
           disabled={true}
           label="주소"
           value={boxInput}
           placeholder="주소를 입력해주세요"
-          iconSrc={SwitchSvg}
           onChange={(e) => setBoxInput(e.target.value)}
         ></BoxInput>
       </Container>
 
-      <Container>
+      {/* <Container>
         <Title>SelectLine</Title>
         <StateBox>
           <State>selectBoxInput</State>
@@ -145,7 +135,7 @@ function Components() {
           placeholder="소득의 원천을 선택해주세요."
           iconSrc={SwitchSvg}
         ></SelectBox>
-      </Container>
+      </Container> */}
 
       <Container>
         <Title>SearchInput</Title>

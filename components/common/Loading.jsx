@@ -11,6 +11,7 @@ Loading.defaultProps = {
   width: "30px",
   height: "30px",
   margin: "auto",
+  color: "var(--brandColor)",
 };
 
 const Wrapper = styled.div`
@@ -18,11 +19,13 @@ const Wrapper = styled.div`
   margin: ${(props) => props.margin};
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-
-  border: 3px solid var(--brandColor);
+  border-width: 3px;
+  border-style: solid;
+  border-color: ${(props) => props.color};
   border-radius: 50%;
   border-top-color: transparent;
   animation: spin 1s linear infinite;
+  background-color: transparent;
 
   @keyframes spin {
     0% {
