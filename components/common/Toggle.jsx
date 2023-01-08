@@ -44,7 +44,7 @@ Toggle.defaultProps = {
   height: "24px", // 토글 높이
   margin: "0px", // 토글 마진
   padding: "0px", // 토글 패딩
-  toggleOffBackground: "var(--disableBtn)", // off 상태의 토글 배경
+  toggleOffBackground: "var(--disabled)", // off 상태의 토글 배경
   toggleOnBackground: "var(--brandColor)", // on 상태의 토글 배경
   sliderMargin: "1px", // 슬라이더와 토글 테두리 사이의 간격
   sliderColor: "#ffffff", // 슬라이더 색

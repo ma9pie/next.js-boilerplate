@@ -6,7 +6,14 @@ import Theme from "@/components/common/Theme";
 function Header() {
   return (
     <Wrapper>
-      <LogoWrapper>Logo</LogoWrapper>
+      <Link href="/">
+        <a>
+          <LinkBox>
+            <LogoWrapper>Logo</LogoWrapper>
+          </LinkBox>
+        </a>
+      </Link>
+
       <MenuContainer>
         <Link href="/">
           <a>

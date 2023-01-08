@@ -1,27 +1,20 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import BoxInput from "@/components/common/Inputs/BoxInput";
-import DividedInput from "@/components/common/Inputs/DividedInput";
 import LimitInput from "@/components/common/Inputs/LimitInput";
 import LineInput from "@/components/common/Inputs/LineInput";
 import SearchInput from "@/components/common/Inputs/SearchInput";
-import SelectBox from "@/components/common/Inputs/SelectBox";
 import SelectLine from "@/components/common/Inputs/SelectLine";
 import ComponentsLayout from "@/layouts/ComponentsLayout";
 
 function Components() {
   const [lineInput, setLineInput] = useState("");
   const [limitInput, setLimitInput] = useState("");
-  const [dividedInput, setDividedInput] = useState({ first: "", second: "" });
   const [selectLineInput, setSelectLineInput] = useState({
     name: "",
     value: "",
   });
   const [boxInput, setBoxInput] = useState("");
-  const [selectBoxInput, setSelectBoxInput] = useState({
-    name: "",
-    value: "",
-  });
   const [searchWord, setSearchWord] = useState("");
 
   return (
@@ -58,19 +51,6 @@ function Components() {
           placeholder="닉네임을 입력해주세요."
           onChange={(e) => setLimitInput(e.target.value)}
         ></LimitInput>
-      </Container>
-
-      <Container>
-        <Title>DividedInput</Title>
-        <StateBox>
-          <State>dividedInput : {JSON.stringify(dividedInput)}</State>
-        </StateBox>
-        <DividedInput
-          label={{ first: "영문 성", second: "영문 이름" }}
-          value={dividedInput}
-          placeholder={{ first: "성", second: "이름" }}
-          onChange={(obj) => setDividedInput(obj)}
-        ></DividedInput>
       </Container>
 
       <Container>

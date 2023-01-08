@@ -8,9 +8,7 @@ function SelectBox(props) {
     <Wrapper width={props.width}>
       <Label>{props.label}</Label>
       <BoxContainer
-        backgroundColor={
-          props.disabled ? "var(--disableBtn)" : "var(--textBox)"
-        }
+        backgroundColor={props.disabled ? "var(--disabled)" : "var(--textBox)"}
       >
         <Box
           value={props.value.name}

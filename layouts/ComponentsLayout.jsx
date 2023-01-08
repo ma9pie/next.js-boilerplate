@@ -181,6 +181,6 @@ const List = styled.p`
   padding: 4px 24px;
   transition: background-color 0.1s ease;
   &:hover {
-    background-color: var(--disableBtn);
+    background-color: var(--disabled);
   }
 `;
