@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 import Image from "next/image";
 import React, { useCallback, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import CookieUtils from "@/utils/CookieUtils";
 import moon from "@/images/moon.svg";
 import sun from "@/images/sun.svg";
 
@@ -12,9 +11,6 @@ const Theme = (props) => {
 
   // 다크 모드
   const setDark = useCallback(() => {
-    CookieUtils.set("theme", "Dark", {
-      "max-age": 60 * 60 * 24 * 365,
-    });
     document.documentElement.setAttribute("data-theme", "Dark");
     localStorage.setItem("theme", "Dark");
     setTheme("Dark");
@@ -22,9 +18,6 @@ const Theme = (props) => {
 
   // 라이트 모드
   const setLight = useCallback(() => {
-    CookieUtils.set("theme", "Light", {
-      "max-age": 60 * 60 * 24 * 365,
-    });
     document.documentElement.setAttribute("data-theme", "Light");
     localStorage.setItem("theme", "Light");
     setTheme("Light");

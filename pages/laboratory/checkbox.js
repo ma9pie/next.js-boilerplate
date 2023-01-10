@@ -32,7 +32,7 @@ function Components() {
       <Container>
         <Title>Disabled</Title>
         <CheckBox
-          disabled={true}
+          disabled
           checked={check3}
           onClick={(checked) => {
             setCheck3(checked);

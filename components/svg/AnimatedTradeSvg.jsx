@@ -41,7 +41,7 @@ const SvgComponent = (props) => {
 export default SvgComponent;
 
 SvgComponent.defaultProps = {
-  color: "var(--icon1)",
+  color: "var(--main)",
   cursor: "pointer",
 };
 

@@ -66,6 +66,6 @@ const UnChecked = styled.div`
 const Disalbed = styled.div`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
-  background-color: var(--disableBtn);
+  background-color: var(--disabled);
   border-radius: 6px;
 `;

@@ -83,5 +83,6 @@ const Box = styled.div`
   background-color: var(--textBox);
   border-radius: 5px;
   text-align: center;
+  border: 1px solid var(--sectionLine);
   cursor: pointer;
 `;

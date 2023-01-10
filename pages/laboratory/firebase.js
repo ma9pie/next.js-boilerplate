@@ -20,7 +20,7 @@ function Components() {
 
   // 전체 유저 조회
   const getAllUsers = async () => {
-    Axios.get("/api/user").then((res) => {
+    Axios.get("/api/v1/firebase/user").then((res) => {
       setUsers(res.data);
     });
   };
@@ -47,7 +47,7 @@ function Components() {
     }
 
     setIsLoading(true);
-    Axios.post("/api/user", inputs).then((res) => {
+    Axios.post("/api/v1/firebase/user", inputs).then((res) => {
       setIsLoading(false);
       if (res.data.success) {
         ModalUtils.openToastPopup({
@@ -65,15 +65,17 @@ function Components() {
     ModalUtils.openConfirm({
       message: "해당 유저를 삭제하시겠습니까?",
       onRequestConfirm: () => {
-        Axios.delete("/api/user", { data: { key: user.key } }).then((res) => {
-          if (res.data.success) {
-            ModalUtils.openToastPopup({
-              type: "success",
-              message: "아이디가 삭제되었습니다.",
-            });
-            getAllUsers();
+        Axios.delete("/api/v1/firebase/user", { data: { key: user.key } }).then(
+          (res) => {
+            if (res.data.success) {
+              ModalUtils.openToastPopup({
+                type: "success",
+                message: "아이디가 삭제되었습니다.",
+              });
+              getAllUsers();
+            }
           }
-        });
+        );
       },
     });
   };
@@ -85,7 +87,7 @@ function Components() {
       onRequestConfirm: () => {
         Promise.all(
           users.map((user) => {
-            Axios.delete("/api/user", { data: { key: user.key } });
+            Axios.delete("/api/v1/firebase/user", { data: { key: user.key } });
           })
         ).then((res) => {
           ModalUtils.openToastPopup({

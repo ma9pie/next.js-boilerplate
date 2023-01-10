@@ -11,6 +11,7 @@ function Components() {
         <Headlines20>Headings/Headline 20</Headlines20>
         <Headlines18>Headings/Headline 18</Headlines18>
         <Headlines16>Headings/Headline 16</Headlines16>
+        <Headlines14>Headings/Headline 14</Headlines14>
       </TypoBox>
       <TypoBox>
         <Title>BODY</Title>
@@ -61,6 +62,9 @@ const Headlines18 = styled.p`
 `;
 const Headlines16 = styled.p`
   font: var(--headline16);
+`;
+const Headlines14 = styled.p`
+  font: var(--headline14);
 `;
 
 const Body20 = styled.p`

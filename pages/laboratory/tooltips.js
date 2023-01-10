@@ -116,10 +116,8 @@ const Box = styled.div`
   background-color: var(--textBox);
   text-align: center;
   word-break: keep-all;
+  border: 1px solid var(--sectionLine);
   border-radius: 5px;
   cursor: pointer;
 `;
-const Blank = styled.div`
-  border-radius: 5px;
-  background-color: var(--disableBtn);
-`;
+const Blank = styled.div``;

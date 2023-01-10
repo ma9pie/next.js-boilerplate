@@ -11,11 +11,11 @@ function Components() {
   return (
     <Wrapper>
       <Grid>
-        <AnimatedHomeSvg color="white"></AnimatedHomeSvg>
-        <AnimatedTradeSvg color="white"></AnimatedTradeSvg>
-        <AnimatedBalanceSvg color="white"></AnimatedBalanceSvg>
-        <AnimatedTradeHistorySvg color="white"></AnimatedTradeHistorySvg>
-        <AnimatedViewMoreSvg color="white"></AnimatedViewMoreSvg>
+        <AnimatedHomeSvg></AnimatedHomeSvg>
+        <AnimatedTradeSvg></AnimatedTradeSvg>
+        <AnimatedBalanceSvg></AnimatedBalanceSvg>
+        <AnimatedTradeHistorySvg></AnimatedTradeHistorySvg>
+        <AnimatedViewMoreSvg></AnimatedViewMoreSvg>
       </Grid>
     </Wrapper>
   );

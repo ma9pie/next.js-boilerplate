@@ -32,7 +32,7 @@ const SvgComponent = (props) => {
 export default SvgComponent;
 
 SvgComponent.defaultProps = {
-  color: "var(--icon1)",
+  color: "var(--main)",
   cursor: "pointer",
 };
 
@@ -45,17 +45,17 @@ const animation = css`
   }
   @keyframes trade-history-svg-animation {
     0% {
-      fill: white;
+      fill: var(--main);
       transform: scale(1);
       opacity: 1;
     }
     50% {
-      fill: white;
+      fill: var(--main);
       transform: scale(1.1);
       opacity: 1;
     }
     100% {
-      fill: white;
+      fill: var(--main);
       transform: scale(1);
       opacity: 1;
     }

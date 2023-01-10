@@ -41,7 +41,7 @@ function Components() {
             <Text>Textbox</Text>
           </ColorBox>
           <ColorBox>
-            <Color color="var(--disableBtn)"></Color>
+            <Color color="var(--disabled)"></Color>
             <Text>Disable Btn</Text>
           </ColorBox>
           <ColorBox>
