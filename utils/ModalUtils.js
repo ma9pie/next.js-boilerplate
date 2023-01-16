@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import ReactDOM from "react-dom";
 import AlertModal from "@/components/common/Modals/AlertModal";
 import BottomSheet from "@/components/common/Modals/BottomSheet";
@@ -15,15 +14,11 @@ const ModalUtils = () => {};
  * @param {String} message(@default "메시지") : 메시지
  * @param {String} confirmBtnText(@default "확인") : 확인 버튼 텍스트
  * @param {String} cancleBtnText(@default "취소") : 취소 버튼 텍스트
- * @param {String} maxAge(@default -1) : 더이상 보지 않기 버튼 텍스트
- * @param {String} cookieName(@default "") : 더이상 보지 않기 버튼 텍스트
- * @param {String} doNotSeeText(@default "오늘 하루 보지 않기") : 더이상 보지 않기 버튼 텍스트
  * @param {ReactElement} component : 컴포넌트
  * @param {Function} onAfterOpen : 모달이 열린 후 실행 될 함수
  * @param {Function} onAfterClose : 모달이 닫힌 후 실행 될 함수
  * @param {Function} onRequestConfirm : 확인버튼을 누른 후 실행 될 함수
  * @param {Function} onRequestCancle : 취소버튼을 누른 후 실행 될 함수
- * @param {Function} onRequestDoNotSee : 더이상 보지않기를 누른 후 실행될 함수
  */
 const defaultProps = {
   isOpen: true,
@@ -36,15 +31,26 @@ const defaultProps = {
   message: "메시지",
   confirmBtnText: "확인",
   cancleBtnText: "취소",
-  maxAge: -1,
-  cookieName: "",
-  doNotSeeText: "오늘 하루 보지 않기",
   component: () => {},
   onAfterOpen: () => {},
   onAfterClose: () => {},
   onRequestConfirm: () => {},
   onRequestCancle: () => {},
-  onRequestDoNotSee: () => {},
+};
+
+/**
+ * 모달 렌더링 함수
+ */
+ModalUtils.render = (Component, props, id) => {
+  const target = document.getElementById(id);
+  props.unmount = () => ReactDOM.unmountComponentAtNode(target);
+  props.onRequestClose = () => {
+    ReactDOM.render(<Component {...props} isOpen={false}></Component>, target);
+    setTimeout(() => {
+      props.unmount();
+    }, 200);
+  };
+  ReactDOM.render(<Component {...props} isOpen={true}></Component>, target);
 };
 
 /**
@@ -52,14 +58,8 @@ const defaultProps = {
  * 확인 버튼만 있는 모달창
  */
 ModalUtils.openAlert = (obj) => {
-  let props = { ...defaultProps, ...obj };
-  const modal = document.getElementById("alert-modal");
-  const onRequestClose = () => {
-    props.isOpen = false;
-    ReactDOM.render(<AlertModal {...props}></AlertModal>, modal);
-  };
-  props.onRequestClose = onRequestClose;
-  ReactDOM.render(<AlertModal {...props}></AlertModal>, modal);
+  const props = { ...defaultProps, ...obj };
+  ModalUtils.render(AlertModal, props, "alert-modal");
 };
 
 /**
@@ -67,72 +67,36 @@ ModalUtils.openAlert = (obj) => {
  * 취소, 확인 버튼이 있는 모달창
  */
 ModalUtils.openConfirm = (obj) => {
-  let props = { ...defaultProps, ...obj };
-  const modal = document.getElementById("confirm-modal");
-  const onRequestClose = () => {
-    props.isOpen = false;
-    ReactDOM.render(<ConfirmModal {...props}></ConfirmModal>, modal);
-  };
-  props.onRequestClose = onRequestClose;
-  ReactDOM.render(<ConfirmModal {...props}></ConfirmModal>, modal);
+  const props = { ...defaultProps, ...obj };
+  ModalUtils.render(ConfirmModal, props, "confirm-modal");
+};
+
+/**
+ * [Toast 팝업]
+ * 하단 중앙에 뜨는 토스트 팝업
+ */
+ModalUtils.openToastPopup = (obj) => {
+  const props = { ...obj };
+  ModalUtils.render(ToastPopup, props, "toast-popup");
 };
 
 /**
  * [BottomSheet]
  * 아래에서 올라오는 페이지 형태의 모달
  */
-let onRequestCloseBottomSheet;
+let bottomSheetProps;
 ModalUtils.openBottomSheet = (obj) => {
-  let props = { ...defaultProps, ...obj };
-  const modal = document.getElementById("bottom-sheet");
-  const onRequestClose = () => {
-    props.isOpen = false;
-    ReactDOM.render(<BottomSheet {...props}></BottomSheet>, modal);
-  };
-  props.onRequestClose = onRequestClose;
-  onRequestCloseBottomSheet = onRequestClose;
-  ReactDOM.render(<BottomSheet {...props}></BottomSheet>, modal);
+  const props = { ...defaultProps, ...obj };
+  bottomSheetProps = props;
+  ModalUtils.render(BottomSheet, props, "bottom-sheet");
 };
 ModalUtils.closeBottomSheet = () => {
-  if (onRequestCloseBottomSheet) {
-    onRequestCloseBottomSheet();
-  }
-};
-
-/**
- * [ToastPopup]
- * 하단 중앙에 뜨는 토스트 팝업
- */
-let toastTimeOutId = -1;
-let isOpenToastPopup = null;
-const renderToastPopup = (props) => {
-  const modal = document.getElementById("toast-popup");
-  ReactDOM.render(<ToastPopup {...props}></ToastPopup>, modal);
-};
-ModalUtils.openToastPopup = (obj) => {
-  let props = { ...obj };
-  let delay = 0;
-  props.onRequestClose = () => renderToastPopup({ ...props, isOpen: false });
-
-  if (isOpenToastPopup) {
-    delay = 100;
-    isOpenToastPopup = false;
-  } else {
-    delay = 0;
-    isOpenToastPopup = null;
-  }
-
-  renderToastPopup({ ...props, isOpen: isOpenToastPopup });
-  clearTimeout(toastTimeOutId);
+  const target = document.getElementById("bottom-sheet");
+  bottomSheetProps.isOpen = false;
+  ReactDOM.render(<BottomSheet {...bottomSheetProps}></BottomSheet>, target);
   setTimeout(() => {
-    isOpenToastPopup = true;
-    renderToastPopup({ ...props, isOpen: isOpenToastPopup });
-  }, delay);
-
-  toastTimeOutId = setTimeout(() => {
-    isOpenToastPopup = false;
-    renderToastPopup({ ...props, isOpen: isOpenToastPopup });
-  }, 2000);
+    ReactDOM.unmountComponentAtNode(target);
+  }, 200);
 };
 
 export default ModalUtils;
