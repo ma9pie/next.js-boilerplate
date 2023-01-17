@@ -36,6 +36,13 @@ function ToastPopup(props) {
     };
   }, [props.unmount]);
 
+  const close = () => {
+    setIsOpen(false);
+    setTimeout(() => {
+      props.unmount();
+    }, 200);
+  };
+
   const getSvg = useCallback((type) => {
     switch (type) {
       case "success":
@@ -71,7 +78,7 @@ function ToastPopup(props) {
             ? cx(OpenToastPopup)
             : cx(CloseToastPopup)
         }
-        onClick={() => props.onRequestClose()}
+        onClick={close}
       >
         <SvgWrapper>{getSvg(props.type)}</SvgWrapper>
         <TextBox>
