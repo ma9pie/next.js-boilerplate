@@ -1,12 +1,11 @@
 import { css, cx } from "@emotion/css";
 import styled from "@emotion/styled";
-import { useRouter } from "next/router";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
 function ReactCalendar(props) {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date(props.date));
 
   const changeDate = (date) => {
     setDate(date);
@@ -30,7 +29,7 @@ function ReactCalendar(props) {
 export default ReactCalendar;
 
 ReactCalendar.defaultProps = {
-  defaultDate: new Date(),
+  date: new Date(),
   width: "auto",
   height: "auto",
   isOpen: false,
@@ -39,6 +38,8 @@ ReactCalendar.defaultProps = {
 };
 
 const style = css`
+  border: 1px solid var(--sectionLine);
+  width: 100%;
   & abbr {
     text-decoration: none;
     background-color: inherit;
