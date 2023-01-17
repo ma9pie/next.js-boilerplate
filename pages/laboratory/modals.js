@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import MediumButton from "@/components/common/Buttons/MediumButton";
-import ComponentsLayout from "@/layouts/ComponentsLayout";
+import LaboratoryLayout from "@/layouts/LaboratoryLayout";
 import ModalUtils from "@/utils/ModalUtils";
 
 function Components() {
@@ -175,7 +175,7 @@ const TestComponent = () => {
 export default Components;
 
 Components.getLayout = function getLayout(page) {
-  return <ComponentsLayout>{page}</ComponentsLayout>;
+  return <LaboratoryLayout>{page}</LaboratoryLayout>;
 };
 
 const Wrapper = styled.div`

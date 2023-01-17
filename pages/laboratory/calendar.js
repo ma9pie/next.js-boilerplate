@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import MediumButton from "@/components/common/Buttons/MediumButton";
-import NavigationBar from "@/components/layout/NavigationBar";
+import Calendar from "@/components/common/Calendar";
 import LaboratoryLayout from "@/layouts/LaboratoryLayout";
 
 function Components() {
   return (
     <Wrapper>
-      <NavigationBar></NavigationBar>
+      <Calendar></Calendar>
     </Wrapper>
   );
 }

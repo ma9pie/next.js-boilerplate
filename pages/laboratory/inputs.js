@@ -5,7 +5,7 @@ import LimitInput from "@/components/common/Inputs/LimitInput";
 import LineInput from "@/components/common/Inputs/LineInput";
 import SearchInput from "@/components/common/Inputs/SearchInput";
 import SelectLine from "@/components/common/Inputs/SelectLine";
-import ComponentsLayout from "@/layouts/ComponentsLayout";
+import LaboratoryLayout from "@/layouts/LaboratoryLayout";
 
 function Components() {
   const [lineInput, setLineInput] = useState("");
@@ -135,7 +135,7 @@ function Components() {
 export default Components;
 
 Components.getLayout = function getLayout(page) {
-  return <ComponentsLayout>{page}</ComponentsLayout>;
+  return <LaboratoryLayout>{page}</LaboratoryLayout>;
 };
 
 const Wrapper = styled.div`

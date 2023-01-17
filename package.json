@@ -21,6 +21,7 @@
     "nprogress": "^0.2.0",
     "rc-tooltip": "^5.2.2",
     "react": "17.0.2",
+    "react-calendar": "^4.0.0",
     "react-dom": "17.0.2",
     "react-modal": "^3.16.1",
     "react-query": "^3.39.2",

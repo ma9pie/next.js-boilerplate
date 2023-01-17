@@ -5,7 +5,7 @@ import LargeButton from "@/components/common/Buttons/LargeButton";
 import TextButton from "@/components/common/Buttons/TextButton";
 import LineInput from "@/components/common/Inputs/LineInput";
 import Loading from "@/components/common/Loading";
-import ComponentsLayout from "@/layouts/ComponentsLayout";
+import LaboratoryLayout from "@/layouts/LaboratoryLayout";
 import ModalUtils from "@/utils/ModalUtils";
 import Axios from "@/api/index";
 
@@ -164,7 +164,7 @@ function Components() {
 export default Components;
 
 Components.getLayout = function getLayout(page) {
-  return <ComponentsLayout>{page}</ComponentsLayout>;
+  return <LaboratoryLayout>{page}</LaboratoryLayout>;
 };
 
 const Wrapper = styled.div`

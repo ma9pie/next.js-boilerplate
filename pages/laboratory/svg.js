@@ -5,7 +5,7 @@ import AnimatedHomeSvg from "@/components/svg/AnimatedHomeSvg";
 import AnimatedTradeHistorySvg from "@/components/svg/AnimatedTradeHistorySvg";
 import AnimatedTradeSvg from "@/components/svg/AnimatedTradeSvg";
 import AnimatedViewMoreSvg from "@/components/svg/AnimatedViewMoreSvg";
-import ComponentsLayout from "@/layouts/ComponentsLayout";
+import LaboratoryLayout from "@/layouts/LaboratoryLayout";
 
 function Components() {
   return (
@@ -24,7 +24,7 @@ function Components() {
 export default Components;
 
 Components.getLayout = function getLayout(page) {
-  return <ComponentsLayout>{page}</ComponentsLayout>;
+  return <LaboratoryLayout>{page}</LaboratoryLayout>;
 };
 
 const Wrapper = styled.div`

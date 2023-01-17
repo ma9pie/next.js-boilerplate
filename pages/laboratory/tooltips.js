@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import Tooltip from "@/components/common/Tooltip";
-import ComponentsLayout from "@/layouts/ComponentsLayout";
+import LaboratoryLayout from "@/layouts/LaboratoryLayout";
 import InfoSvg from "@/svg/InfoSvg";
 
 function Components() {
@@ -80,7 +80,7 @@ function Components() {
 export default Components;
 
 Components.getLayout = function getLayout(page) {
-  return <ComponentsLayout>{page}</ComponentsLayout>;
+  return <LaboratoryLayout>{page}</LaboratoryLayout>;
 };
 
 const Wrapper = styled.div`

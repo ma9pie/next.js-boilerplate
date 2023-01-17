@@ -5,7 +5,7 @@ import Theme from "@/components/common/Theme";
 import CloseSvg from "@/svg/CloseSvg";
 import ViewMoreSvg from "@/svg/ViewMoreSvg";
 
-function ComponentsLayout(props) {
+function LaboratoryLayout(props) {
   const sidebarRef = useRef(null);
   const router = useRouter();
   const [title, setTitle] = useState("Index");
@@ -31,6 +31,10 @@ function ComponentsLayout(props) {
     {
       title: "Carousel",
       url: "/laboratory/carousel",
+    },
+    {
+      title: "Calendar",
+      url: "/laboratory/calendar",
     },
     {
       title: "Modals",
@@ -139,7 +143,7 @@ function ComponentsLayout(props) {
   );
 }
 
-export default ComponentsLayout;
+export default LaboratoryLayout;
 const Wrapper = styled.div``;
 const Top = styled.div`
   display: flex;
