@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import CheckBox from "@/components/common/CheckBox";
 import LaboratoryLayout from "@/layouts/LaboratoryLayout";
 
@@ -7,6 +7,9 @@ function Components() {
   const [check1, setCheck1] = useState(true);
   const [check2, setCheck2] = useState(false);
   const [check3, setCheck3] = useState(false);
+  const [check4, setCheck4] = useState(false);
+  const [check5, setCheck5] = useState(false);
+
   return (
     <Wrapper>
       <Container>
@@ -39,6 +42,26 @@ function Components() {
           }}
         ></CheckBox>
       </Container>
+
+      <Container>
+        <BigText>Check</BigText>
+        <CheckBox
+          width="30px"
+          height="30px"
+          checked={check4}
+          onClick={(checked) => {
+            setCheck4(checked);
+          }}
+        ></CheckBox>
+      </Container>
+
+      <CheckBox
+        margin="0px 0px 0px 24px"
+        checked={check5}
+        onClick={(checked) => {
+          setCheck5(checked);
+        }}
+      ></CheckBox>
     </Wrapper>
   );
 }
@@ -58,5 +81,9 @@ const Container = styled.div`
   margin-bottom: 16px;
 `;
 const Title = styled.div`
-  width: 80px;
+  width: 100px;
+`;
+const BigText = styled.div`
+  width: 100px;
+  font-size: 30px;
 `;
