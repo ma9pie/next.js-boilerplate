@@ -4,7 +4,7 @@ import ReactModal from "react-modal";
 import Modal from "@/components/common/Modals";
 import ControlUtils from "@/utils/ControlUtils";
 
-ReactModal.setAppElement("#alert-modal");
+ReactModal.setAppElement("#confirm-modal");
 
 function ConfirmModal(props) {
   const { doubleClickPrevention } = new Object(ControlUtils);
@@ -31,9 +31,10 @@ function ConfirmModal(props) {
         </Top>
         <Content>
           {props.component()}
-          {props.message.split("\n").map((text, idx) => (
-            <Text key={idx}>{text}</Text>
-          ))}
+          {props.message &&
+            props.message
+              .split("\n")
+              .map((text, idx) => <Text key={idx}>{text}</Text>)}
         </Content>
         <ButtonBox>
           <Button

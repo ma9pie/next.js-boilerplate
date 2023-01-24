@@ -32,9 +32,10 @@ function AlertModal(props) {
         </Top>
         <Content>
           {props.component()}
-          {props.message.split("\n").map((text, idx) => (
-            <Text key={idx}>{text}</Text>
-          ))}
+          {props.message &&
+            props.message
+              .split("\n")
+              .map((text, idx) => <Text key={idx}>{text}</Text>)}
         </Content>
         <ButtonBox>
           <Button

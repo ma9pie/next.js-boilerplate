@@ -1,4 +1,5 @@
 import ReactDOM from "react-dom";
+import Modal from "@/components/common/Modals";
 import AlertModal from "@/components/common/Modals/AlertModal";
 import BottomSheet from "@/components/common/Modals/BottomSheet";
 import ConfirmModal from "@/components/common/Modals/ConfirmModal";
@@ -31,7 +32,7 @@ const defaultProps = {
   message: "메시지",
   confirmBtnText: "확인",
   cancleBtnText: "취소",
-  component: () => {},
+  component: () => null,
   onAfterOpen: () => {},
   onAfterClose: () => {},
   onRequestConfirm: () => {},
@@ -51,6 +52,33 @@ ModalUtils.render = (Component, props, id) => {
     }, 200);
   };
   ReactDOM.render(<Component {...props} isOpen={true}></Component>, target);
+};
+
+/**
+ * [모달]
+ * 빈 모달창
+ */
+ModalUtils.openModal = (obj) => {
+  const props = { ...defaultProps, ...obj };
+  const target = document.getElementById("modal");
+  props.unmount = () => ReactDOM.unmountComponentAtNode(target);
+  props.onRequestClose = () => {
+    ReactDOM.render(
+      <Modal {...props} isOpen={false}>
+        {props.component()}
+      </Modal>,
+      target
+    );
+    setTimeout(() => {
+      props.unmount();
+    }, 200);
+  };
+  ReactDOM.render(
+    <Modal {...props} isOpen={true}>
+      {props.component()}
+    </Modal>,
+    target
+  );
 };
 
 /**

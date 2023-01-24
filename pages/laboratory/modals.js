@@ -7,6 +7,33 @@ import ModalUtils from "@/utils/ModalUtils";
 function Components() {
   return (
     <Wrapper>
+      <Title>Modal</Title>
+      <ButtonBox>
+        <MediumButton
+          onClick={() => {
+            ModalUtils.openModal({
+              onAfterOpen: () => {
+                console.log("onAfterOpen");
+              },
+              onAfterClose: () => {
+                console.log("onAfterClose");
+              },
+            });
+          }}
+        >
+          Modal
+        </MediumButton>
+        <MediumButton
+          onClick={() => {
+            ModalUtils.openModal({
+              component: () => <TestComponent></TestComponent>,
+            });
+          }}
+        >
+          Component Modal
+        </MediumButton>
+      </ButtonBox>
+
       <Title>Alert</Title>
       <ButtonBox>
         <MediumButton
@@ -29,9 +56,7 @@ function Components() {
         <MediumButton
           onClick={() => {
             ModalUtils.openAlert({
-              component: () => {
-                return <TestComponent></TestComponent>;
-              },
+              component: () => <TestComponent></TestComponent>,
             });
           }}
         >
@@ -68,9 +93,7 @@ function Components() {
         <MediumButton
           onClick={() => {
             ModalUtils.openConfirm({
-              component: () => {
-                return <TestComponent></TestComponent>;
-              },
+              component: () => <TestComponent></TestComponent>,
             });
           }}
         >

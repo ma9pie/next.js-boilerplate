@@ -64,9 +64,12 @@ function Modal(props) {
 
 export default React.memo(Modal);
 
-Modal.defaultProps = {};
+Modal.defaultProps = { children: () => {} };
 
 const Wrapper = styled.div`
   overflow: hidden;
   border-radius: 15px;
+`;
+const Text = styled.p`
+  height: 20px;
 `;
