@@ -115,7 +115,7 @@ ModalUtils.openToastPopup = (obj) => {
 let bottomSheetProps;
 ModalUtils.openBottomSheet = (obj) => {
   const props = { ...defaultProps, ...obj };
-  bottomSheetProps = props;
+  bottomSheetProps = { ...props };
   ModalUtils.render(BottomSheet, props, "bottom-sheet");
 };
 ModalUtils.closeBottomSheet = () => {
