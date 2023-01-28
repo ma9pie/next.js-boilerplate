@@ -58,9 +58,11 @@ ModalUtils.render = (Component, props, id) => {
  * [모달]
  * 빈 모달창
  */
+let modalProps;
 ModalUtils.openModal = (obj) => {
   const props = { ...defaultProps, ...obj };
   const target = document.getElementById("modal");
+  modalProps = { ...props };
   props.unmount = () => ReactDOM.unmountComponentAtNode(target);
   props.onRequestClose = () => {
     ReactDOM.render(
@@ -79,6 +81,14 @@ ModalUtils.openModal = (obj) => {
     </Modal>,
     target
   );
+};
+ModalUtils.closeModal = () => {
+  const target = document.getElementById("modal");
+  modalProps.isOpen = false;
+  ReactDOM.render(<Modal {...modalProps}></Modal>, target);
+  setTimeout(() => {
+    ReactDOM.unmountComponentAtNode(target);
+  }, 200);
 };
 
 /**
