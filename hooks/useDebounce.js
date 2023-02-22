@@ -1,43 +1,40 @@
-/**
- * @refference
- * https://learnersbucket.com/examples/interview/usedebounce-hook-in-react/
- */
 import { useCallback, useRef } from "react";
 
+/**
+ * 디바운스 hooks
+ * @param {Function} callback : 콜백함수
+ * @param {Number} delay : 딜레이(ms)
+ * @param {Boolean} immediate : 즉시 실행 여부
+ * @refference
+ * https://learnersbucket.com/examples/interview/usedebounce-hook-in-react
+ */
 const useDebounce = (callback, delay = 300, immediate = false) => {
-  // ref the timer
   const timerId = useRef();
 
-  // create a memoized debounce
+  // memoized debounce 함수 생성
   const debounce = useCallback(
     function () {
-      // reference the context and args for the setTimeout function
       let context = this,
         args = arguments;
 
-      // should the function be called now? If immediate is true
-      // and not already in a timeout then the answer is: Yes
+      // 즉시 실행 여부
       const callNow = immediate && !timerId.current;
 
-      // base case
-      // clear the timeout to assign the new timeout to it.
-      // when event is fired repeatedly then this helps to reset
+      // 할당된 timeout pid 제거
       clearTimeout(timerId.current);
 
-      // set the new timeout
+      // timeout pid 할당
       timerId.current = setTimeout(function () {
-        // Inside the timeout function, clear the timeout variable
-        // which will let the next execution run when in 'immediate' mode
         timerId.current = null;
 
-        // check if the function already ran with the immediate flag
+        // immediate mode로 함수가 이미 실행되었는지 확인
         if (!immediate) {
-          // call the original function with apply
+          // apply로 함수 호출
           callback.apply(context, args);
         }
       }, delay);
 
-      // immediate mode and no wait timer? Execute the function immediately
+      // immediate는 true이고 대기 타이머 없을 시 즉시 실행
       if (callNow) callback.apply(context, args);
     },
     [callback, delay, immediate]

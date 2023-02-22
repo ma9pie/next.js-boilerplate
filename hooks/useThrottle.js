@@ -12,33 +12,31 @@ const useThrottle = (
   const timerId = useRef(); // track the timer
   const lastArgs = useRef(); // track the args
 
-  // create a memoized debounce
   const throttle = useCallback(
     function (...args) {
       const { trailing, leading } = option;
-      // function for delayed call
+      // 딜레이 호출 함수
       const waitFunc = () => {
-        // if trailing invoke the function and start the timer again
         if (trailing && lastArgs.current) {
           callback.apply(this, lastArgs.current);
           lastArgs.current = null;
           timerId.current = setTimeout(waitFunc, wait);
         } else {
-          // else reset the timer
+          // 타이머 리셋
           timerId.current = null;
         }
       };
 
-      // if leading run it right away
+      // leading이 true일 경우 바로 실행
       if (!timerId.current && leading) {
         callback.apply(this, args);
       }
-      // else store the args
+      // arg 저장
       else {
         lastArgs.current = args;
       }
 
-      // run the delayed call
+      // 딜레이 된 호출 실행
       if (!timerId.current) {
         timerId.current = setTimeout(waitFunc, wait);
       }

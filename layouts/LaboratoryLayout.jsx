@@ -72,6 +72,10 @@ function LaboratoryLayout(props) {
       title: "Firebase",
       url: "/laboratory/firebase",
     },
+    {
+      title: "ScrollBar",
+      url: "/laboratory/scrollBar",
+    },
   ];
 
   useEffect(() => {

@@ -29,7 +29,6 @@
     "recoil-persist": "^4.2.0",
     "sass": "^1.55.0",
     "sharp": "^0.31.2",
-    "simplebar-react": "^2.4.3",
     "swiper": "^8.4.5"
   },
   "devDependencies": {
