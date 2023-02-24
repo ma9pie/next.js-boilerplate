@@ -5,8 +5,6 @@ import LaboratoryLayout from "@/layouts/LaboratoryLayout";
 import ModalUtils from "@/utils/ModalUtils";
 
 function Components() {
-  useEffect(() => {}, []);
-
   return (
     <Wrapper>
       <Title>Modal</Title>

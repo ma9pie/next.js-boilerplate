@@ -40,11 +40,10 @@ ModalUtils.appendNode = (Component, data = {}, id) => {
 
 // node 변경
 ModalUtils.changeNode = (Component, data = {}, id) => {
-  const { key } = data;
   const props = { isOpen: true };
   const node = document.getElementById(id);
 
-  props.unmount = () => node.remove();
+  props.unmount = () => ReactDOM.unmountComponentAtNode(node);
   props.onRequestClose = () => {
     props.isOpen = false;
     ReactDOM.render(<Component {...props} {...data}></Component>, node);
@@ -86,15 +85,7 @@ ModalUtils.openToastPopup = (data) => {
 // bottom-sheet
 let bottomSheetProps;
 ModalUtils.openBottomSheet = (data) => {
-  ModalUtils.changeNode(BottomSheet, data, "bottom-sheet");
-};
-ModalUtils.closeBottomSheet = () => {
-  const node = document.getElementById("bottom-sheet");
-  bottomSheetProps.isOpen = false;
-  ReactDOM.render(<BottomSheet {...bottomSheetProps}></BottomSheet>, node);
-  setTimeout(() => {
-    ReactDOM.unmountComponentAtNode(node);
-  }, 200);
+  ModalUtils.appendNode(BottomSheet, data, "bottom-sheet");
 };
 
 export default ModalUtils;

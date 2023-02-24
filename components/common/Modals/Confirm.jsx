@@ -89,7 +89,7 @@ const Container = styled.div`
   top: ${(props) => props.top};
   left: ${(props) => props.left};
   min-width: 240px;
-  gap: 16px;
+  gap: 24px;
   border-radius: 15px;
   overflow: hidden;
   background-color: var(--bg);
