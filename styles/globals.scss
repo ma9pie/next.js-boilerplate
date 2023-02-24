@@ -41,7 +41,7 @@ input:focus {
   --sectionLine: #f0f0f0;
   --icon1: #b4b9c1;
   --icon2: #727988;
-  --pressedMainBtn: #3182f6;
+  --pressedMainBtn: #194aa6;
   --pressedSubBtn: #e6e6e6;
 }
 
@@ -62,24 +62,39 @@ input:focus {
   --sectionLine: #343a45;
   --icon1: #4a515d;
   --icon2: #727988;
-  --pressedMainBtn: #3182f6;
+  --pressedMainBtn: #194aa6;
   --pressedSubBtn: #27272b;
 }
 
-/* react-modal */
-.ReactModal__Overlay {
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
-.ReactModal__Overlay--after-open {
-  opacity: 1;
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
-
-.ReactModal__Overlay--before-close {
-  opacity: 0;
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
 }
-
-.ReactModal__Content--after-open {
-  overflow: visible !important;
+@keyframes slide-down {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(100%);
+  }
 }

@@ -1,139 +1,99 @@
 import ReactDOM from "react-dom";
-import Modal from "@/components/common/Modals";
-import AlertModal from "@/components/common/Modals/AlertModal";
+import Alert from "@/components/common/Modals/Alert";
 import BottomSheet from "@/components/common/Modals/BottomSheet";
-import ConfirmModal from "@/components/common/Modals/ConfirmModal";
+import Confirm from "@/components/common/Modals/Confirm";
 import ToastPopup from "@/components/common/Modals/ToastPopup";
+import Modal from "@/components/common/Modals/index";
 
-const ModalUtils = () => {};
-
-/**
- * @param {String} top(@default "50%") : top
- * @param {String} left(@default "50%") : left
- * @param {String} minWidth (@default "325px") : 최소 너비
- * @param {String} title(@default "알림") : 제목
- * @param {String} message(@default "메시지") : 메시지
- * @param {String} confirmBtnText(@default "확인") : 확인 버튼 텍스트
- * @param {String} cancleBtnText(@default "취소") : 취소 버튼 텍스트
- * @param {ReactElement} component : 컴포넌트
- * @param {Function} onAfterOpen : 모달이 열린 후 실행 될 함수
- * @param {Function} onAfterClose : 모달이 닫힌 후 실행 될 함수
- * @param {Function} onRequestConfirm : 확인버튼을 누른 후 실행 될 함수
- * @param {Function} onRequestCancle : 취소버튼을 누른 후 실행 될 함수
- */
-const defaultProps = {
-  isOpen: true,
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%,-50%)",
-  overflow: "hidden",
-  minWidth: "325px",
-  title: "알림",
-  message: "메시지",
-  confirmBtnText: "확인",
-  cancleBtnText: "취소",
-  component: () => null,
-  onAfterOpen: () => {},
-  onAfterClose: () => {},
-  onRequestConfirm: () => {},
-  onRequestCancle: () => {},
+const ModalUtils = {
+  hashMap: new Map(),
 };
 
-/**
- * 모달 렌더링 함수
- */
-ModalUtils.render = (Component, props, id) => {
-  const target = document.getElementById(id);
-  props.unmount = () => ReactDOM.unmountComponentAtNode(target);
+// node 추가
+ModalUtils.appendNode = (Component, data = {}, id) => {
+  const { key } = data;
+  const props = { isOpen: true };
+  const container = document.getElementById(id);
+  if (!container) return;
+  const node = document.createElement("div");
+  container.append(node);
+
   props.onRequestClose = () => {
-    ReactDOM.render(<Component {...props} isOpen={false}></Component>, target);
+    props.isOpen = false;
+    ReactDOM.render(<Component {...props} {...data}></Component>, node);
+    setTimeout(() => {
+      node.remove();
+      if (key) {
+        ModalUtils.hashMap.delete(key);
+      }
+    }, 200);
+  };
+
+  props.isOpen = true;
+  ReactDOM.render(<Component {...props} {...data}></Component>, node);
+
+  if (key) {
+    node.id = key;
+    ModalUtils.hashMap.set(key, props);
+  }
+};
+
+// node 변경
+ModalUtils.changeNode = (Component, data = {}, id) => {
+  const { key } = data;
+  const props = { isOpen: true };
+  const node = document.getElementById(id);
+
+  props.unmount = () => node.remove();
+  props.onRequestClose = () => {
+    props.isOpen = false;
+    ReactDOM.render(<Component {...props} {...data}></Component>, node);
     setTimeout(() => {
       props.unmount();
     }, 200);
   };
-  ReactDOM.render(<Component {...props} isOpen={true}></Component>, target);
+  ReactDOM.render(<Component {...props} {...data}></Component>, node);
 };
 
-/**
- * [모달]
- * 빈 모달창
- */
-let modalProps;
-ModalUtils.openModal = (obj) => {
-  const props = { ...defaultProps, ...obj };
-  const target = document.getElementById("modal");
-  modalProps = { ...props };
-  props.unmount = () => ReactDOM.unmountComponentAtNode(target);
-  props.onRequestClose = () => {
-    ReactDOM.render(
-      <Modal {...props} isOpen={false}>
-        {props.component()}
-      </Modal>,
-      target
-    );
-    setTimeout(() => {
-      props.unmount();
-    }, 200);
-  };
-  ReactDOM.render(
-    <Modal {...props} isOpen={true}>
-      {props.component()}
-    </Modal>,
-    target
-  );
-};
-ModalUtils.closeModal = () => {
-  const target = document.getElementById("modal");
-  modalProps.isOpen = false;
-  ReactDOM.render(<Modal {...modalProps}></Modal>, target);
-  setTimeout(() => {
-    ReactDOM.unmountComponentAtNode(target);
-  }, 200);
+// close
+ModalUtils.close = (key) => {
+  const node = document.getElementById(key);
+  if (node) {
+    ModalUtils.hashMap.get(key).onRequestClose();
+  }
 };
 
-/**
- * [Alert 모달]
- * 확인 버튼만 있는 모달창
- */
-ModalUtils.openAlert = (obj) => {
-  const props = { ...defaultProps, ...obj };
-  ModalUtils.render(AlertModal, props, "alert-modal");
+// empty modal
+ModalUtils.openModal = (data) => {
+  ModalUtils.appendNode(Modal, data, "modal");
 };
 
-/**
- * [Confirm 모달]
- * 취소, 확인 버튼이 있는 모달창
- */
-ModalUtils.openConfirm = (obj) => {
-  const props = { ...defaultProps, ...obj };
-  ModalUtils.render(ConfirmModal, props, "confirm-modal");
+// alert
+ModalUtils.openAlert = (data) => {
+  ModalUtils.appendNode(Alert, data, "alert-modal");
 };
 
-/**
- * [Toast 팝업]
- * 하단 중앙에 뜨는 토스트 팝업
- */
-ModalUtils.openToastPopup = (obj) => {
-  const props = { ...obj };
-  ModalUtils.render(ToastPopup, props, "toast-popup");
+// confirm
+ModalUtils.openConfirm = (data) => {
+  ModalUtils.appendNode(Confirm, data, "confirm-modal");
 };
 
-/**
- * [BottomSheet]
- * 아래에서 올라오는 페이지 형태의 모달
- */
+// toast-popup
+ModalUtils.openToastPopup = (data) => {
+  ModalUtils.changeNode(ToastPopup, data, "toast-popup");
+};
+
+// bottom-sheet
 let bottomSheetProps;
-ModalUtils.openBottomSheet = (obj) => {
-  const props = { ...defaultProps, ...obj };
-  bottomSheetProps = { ...props };
-  ModalUtils.render(BottomSheet, props, "bottom-sheet");
+ModalUtils.openBottomSheet = (data) => {
+  ModalUtils.changeNode(BottomSheet, data, "bottom-sheet");
 };
 ModalUtils.closeBottomSheet = () => {
-  const target = document.getElementById("bottom-sheet");
+  const node = document.getElementById("bottom-sheet");
   bottomSheetProps.isOpen = false;
-  ReactDOM.render(<BottomSheet {...bottomSheetProps}></BottomSheet>, target);
+  ReactDOM.render(<BottomSheet {...bottomSheetProps}></BottomSheet>, node);
   setTimeout(() => {
-    ReactDOM.unmountComponentAtNode(target);
+    ReactDOM.unmountComponentAtNode(node);
   }, 200);
 };
 

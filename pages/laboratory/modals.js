@@ -5,6 +5,8 @@ import LaboratoryLayout from "@/layouts/LaboratoryLayout";
 import ModalUtils from "@/utils/ModalUtils";
 
 function Components() {
+  useEffect(() => {}, []);
+
   return (
     <Wrapper>
       <Title>Modal</Title>
@@ -41,7 +43,7 @@ function Components() {
             ModalUtils.openAlert({
               title: "Alert",
               message: "Alert message",
-              confirmBtnText: "확인",
+              confirmBtnText: "confirm",
               onAfterOpen: () => {
                 console.log("onAfterOpen");
               },
@@ -173,6 +175,7 @@ function Components() {
 
 const TestComponent = () => {
   const TextBox = styled.div`
+    width: 100%;
     border-radius: 10px;
     overflow: hidden;
     padding: 16px;

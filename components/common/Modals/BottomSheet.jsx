@@ -1,51 +1,21 @@
 import { css, cx } from "@emotion/css";
 import styled from "@emotion/styled";
-import React, { useState } from "react";
-import ReactModal from "react-modal";
+import React, { useEffect } from "react";
 import CloseSvg from "@/svg/CloseSvg";
 
-ReactModal.setAppElement("#bottom-sheet");
-
 function BottomSheet(props) {
-  const customStyles = {
-    overlay: {
-      position: "fixed",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: "var(--overlay)",
-      zIndex: 999,
-      overscrollBehavior: "contain",
-    },
-    content: {
-      position: "absolute",
-      bottom: 0,
-      left: 0,
-      width: "100%",
-      height: props.height,
-      padding: "0px",
-      border: "0px",
-      borderRadius: "25px 25px 0px 0px",
-      backgroundColor: "var(--bg)",
-      zIndex: 999,
-      overscrollBehavior: "contain",
-    },
-  };
+  useEffect(() => {
+    props.onAfterOpen();
+    return () => props.onAfterClose();
+  }, []);
 
   return (
-    <ReactModal
-      id="test"
-      contentLabel="Modal"
-      closeTimeoutMS={200}
-      isOpen={props.isOpen}
-      style={customStyles}
-      className={props.isOpen ? open : close}
-      onAfterOpen={() => props.onAfterOpen()}
-      onAfterClose={() => props.onAfterClose()}
-      onRequestClose={() => props.onRequestClose()}
-    >
-      <Wrapper>
+    <Wrapper>
+      <Overlay
+        onClick={props.onRequestClose}
+        className={props.isOpen ? fadeIn : fadeOut}
+      ></Overlay>
+      <Container className={props.isOpen ? slideUp : slideDown}>
         <Top>
           <BlankBox></BlankBox>
           <Title>{props.title}</Title>
@@ -54,8 +24,8 @@ function BottomSheet(props) {
           </CloseSvgWrapper>
         </Top>
         <Content>{props.component()} </Content>
-      </Wrapper>
-    </ReactModal>
+      </Container>
+    </Wrapper>
   );
 }
 
@@ -63,36 +33,44 @@ export default React.memo(BottomSheet);
 
 BottomSheet.defaultProps = {
   height: "auto",
+  isOpen: false,
+  title: "알림",
   component: () => {},
+  onAfterOpen: () => {},
+  onAfterClose: () => {},
+  onRequestClose: () => {},
 };
 
-const open = css`
-  animation: open-bottom-sheet 0.2s ease forwards;
-  @keyframes open-bottom-sheet {
-    from {
-      transform: translateY(100%);
-    }
-    to {
-      transform: translateY(0%);
-    }
-  }
+const fadeIn = css`
+  animation: fade-in 0.2s ease-in-out forwards;
 `;
-
-const close = css`
-  animation: close-bottom-sheet 0.2s ease forwards;
-  @keyframes close-bottom-sheet {
-    from {
-      transform: translateY(0%);
-    }
-    to {
-      transform: translateY(100%);
-    }
-  }
+const fadeOut = css`
+  animation: fade-out 0.2s ease-in-out forwards;
 `;
-const Wrapper = styled.div`
+const slideUp = css`
+  animation: slide-up 0.2s ease-in-out forwards;
+`;
+const slideDown = css`
+  animation: slide-down 0.2s ease-in-out forwards;
+`;
+const Wrapper = styled.div``;
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: var(--overlay);
+`;
+const Container = styled.div`
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
   border-radius: 25px 25px 0px 0px;
   padding: 36px 24px;
   max-height: 100vh;
+  z-index: 999;
   & * {
     overscroll-behavior: contain;
     -ms-overflow-style: none; /* 인터넷 익스플로러 */
