@@ -101,6 +101,7 @@ const Content = styled.div`
   align-items: center;
   width: 100%;
   max-height: 1000px;
+  padding: 0px 16px;
   text-align: center;
 `;
 const Text = styled.p`

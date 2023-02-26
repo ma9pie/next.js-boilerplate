@@ -15,7 +15,10 @@ function BottomSheet(props) {
         onClick={props.onRequestClose}
         className={props.isOpen ? fadeIn : fadeOut}
       ></Overlay>
-      <Container className={props.isOpen ? slideUp : slideDown}>
+      <Container
+        className={props.isOpen ? slideUp : slideDown}
+        height={props.height}
+      >
         <Top>
           <BlankBox></BlankBox>
           <Title>{props.title}</Title>
@@ -70,6 +73,7 @@ const Container = styled.div`
   border-radius: 25px 25px 0px 0px;
   padding: 36px 24px;
   max-height: 100vh;
+  height: ${(props) => props.height};
   z-index: 999;
   & * {
     overscroll-behavior: contain;

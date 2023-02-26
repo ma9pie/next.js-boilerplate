@@ -5,6 +5,8 @@ import LaboratoryLayout from "@/layouts/LaboratoryLayout";
 import ModalUtils from "@/utils/ModalUtils";
 
 function Components() {
+  useEffect(() => {}, []);
+
   return (
     <Wrapper>
       <Title>Modal</Title>
@@ -165,6 +167,22 @@ function Components() {
           }}
         >
           Component BottomSheet
+        </MediumButton>
+      </ButtonBox>
+      <ButtonBox>
+        <MediumButton
+          onClick={() => {
+            ModalUtils.openBottomSheet({ height: "50%" });
+          }}
+        >
+          BottomSheet 50%
+        </MediumButton>
+        <MediumButton
+          onClick={() => {
+            ModalUtils.openBottomSheet({ height: "100%" });
+          }}
+        >
+          BottomSheet 100%
         </MediumButton>
       </ButtonBox>
     </Wrapper>

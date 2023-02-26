@@ -62,7 +62,7 @@ ModalUtils.close = (key) => {
   }
 };
 
-// empty modal
+// modal
 ModalUtils.openModal = (data) => {
   ModalUtils.appendNode(Modal, data, "modal");
 };
@@ -77,15 +77,14 @@ ModalUtils.openConfirm = (data) => {
   ModalUtils.appendNode(Confirm, data, "confirm-modal");
 };
 
+// bottom-sheet
+ModalUtils.openBottomSheet = (data) => {
+  ModalUtils.appendNode(BottomSheet, data, "bottom-sheet");
+};
+
 // toast-popup
 ModalUtils.openToastPopup = (data) => {
   ModalUtils.changeNode(ToastPopup, data, "toast-popup");
-};
-
-// bottom-sheet
-let bottomSheetProps;
-ModalUtils.openBottomSheet = (data) => {
-  ModalUtils.appendNode(BottomSheet, data, "bottom-sheet");
 };
 
 export default ModalUtils;
