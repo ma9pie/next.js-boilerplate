@@ -15,12 +15,12 @@ export default function Document() {
         <meta name="theme-color" content="#ffffff" />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta
-          name="msapplication-TileImage"
-          content="icons/mstile-144x144.png"
-        />
-        <meta
           name="msapplication-square70x70logo"
           content="icons/mstile-70x70.png"
+        />
+        <meta
+          name="msapplication-TileImage"
+          content="icons/mstile-144x144.png"
         />
         <meta
           name="msapplication-square150x150logo"
@@ -34,7 +34,6 @@ export default function Document() {
           name="msapplication-square310x310logo"
           content="icons/mstile-310x310.png"
         />
-
         <link rel="manifest" href="manifest.json" />
         <link
           rel="apple-touch-icon"
@@ -43,8 +42,8 @@ export default function Document() {
         />
         <link
           rel="apple-touch-icon"
-          sizes="114x114"
-          href="icons/apple-touch-icon-114x114.png"
+          sizes="60x60"
+          href="icons/apple-touch-icon-60x60.png"
         />
         <link
           rel="apple-touch-icon"
@@ -53,13 +52,13 @@ export default function Document() {
         />
         <link
           rel="apple-touch-icon"
-          sizes="144x144"
-          href="icons/apple-touch-icon-144x144.png"
+          sizes="76x76"
+          href="icons/apple-touch-icon-76x76.png"
         />
         <link
           rel="apple-touch-icon"
-          sizes="60x60"
-          href="icons/apple-touch-icon-60x60.png"
+          sizes="114x114"
+          href="icons/apple-touch-icon-114x114.png"
         />
         <link
           rel="apple-touch-icon"
@@ -68,31 +67,13 @@ export default function Document() {
         />
         <link
           rel="apple-touch-icon"
-          sizes="76x76"
-          href="icons/apple-touch-icon-76x76.png"
+          sizes="144x144"
+          href="icons/apple-touch-icon-144x144.png"
         />
         <link
           rel="apple-touch-icon"
           sizes="152x152"
           href="icons/apple-touch-icon-152x152.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href="icons/favicon-196x196.png"
-          sizes="196x196"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href="icons/favicon-96x96.png"
-          sizes="96x96"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          href="icons/favicon-32x32.png"
-          sizes="32x32"
         />
         <link
           rel="icon"
@@ -103,8 +84,26 @@ export default function Document() {
         <link
           rel="icon"
           type="image/png"
+          href="icons/favicon-32x32.png"
+          sizes="32x32"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          href="icons/favicon-96x96.png"
+          sizes="96x96"
+        />
+        <link
+          rel="icon"
+          type="image/png"
           href="icons/favicon-128.png"
           sizes="128x128"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          href="icons/favicon-196x196.png"
+          sizes="196x196"
         />
 
         {/* 다크모드 시 화면 깜빡임 제거 */}
@@ -116,6 +115,7 @@ export default function Document() {
             `,
           }}
         ></script>
+
         {/* 구글 애널리틱스 */}
         <script
           async
